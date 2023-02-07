@@ -18,6 +18,10 @@ The technologies to be used in this project will be documented here to outline t
 
 During the course of the semester, this documentation will be fleshed out with additional design documents to outline, describe, and detail the various aspects of the process.
 
+[User Stories](userStories.md)
+[Project Plan](projectPlan.md)
+[Screen Design](tbd.md)
+
 ### TimeLog
 
 [Time Log](timeLog.md) 
