@@ -12,15 +12,41 @@ While it is possible to pick "random" episodes from the series one has access to
 Trek Roulette intends to make that random selection process less stressful, requiring minimal human input to select an episode and indicate what media will be used to view the show.
 ### Project Technologies/Techniques
 
-The technologies to be used in this project will be documented here to outline the resources that have contributed to the functionality, security, and durability of the application.
+* **Security/Authentication**
+  * TBD
+* **Database**
+  * MySQL 8.0.22
+* **ORM Framework**
+  * Hibernate 6.1.7
+* **Dependency Management**
+  * Maven
+* **Web Services consumed using Java**
+  * [Star Trek API (STAPI)](https://mvnrepository.com/artifact/com.cezarykluczynski.stapi/stapi-client)
+  * REST API (to support STAPI access)
+* **CSS**
+  * Bootstrap 5
+* **Data Validation**
+  * Bootstrap Validator
+  * Hibernate validation (is this a thing? how does it work?)
+* **Logging**
+  * Log4J2
+* **Hosting**
+  * AWS
+* **Independent Research Topic/s**
+  * Mocking exception tests
+  * APIs/plugins to achieve mocking
+  * Configuration and concept
+* **Unit Testing**
+  * JUnit tests to achieve 80%+ code coverage
+* **IDE**
+  * IntelliJ IDEA
 
 ### Design Documents
 
-During the course of the semester, this documentation will be fleshed out with additional design documents to outline, describe, and detail the various aspects of the process.
-
 [User Stories](userStories.md)
 [Project Plan](projectPlan.md)
-[Screen Design](tbd.md)
+[Application Flow](appFlow.md)
+[Screen Design](screenDesign/screenDesign.md)
 
 ### TimeLog
 

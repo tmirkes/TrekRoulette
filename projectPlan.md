@@ -9,8 +9,7 @@
 - [x] Weekly reflection
 
 ### Week 4
-- [ ] Determine possible Web Services or APIs to use
-- [ ] List technologies, versions and how they will be used
+- [x] List technologies, versions and how they will be used
 - [x] Triple-check for Checkpoint 1
 - [x] Create the database
 - [x] Create USER table
@@ -25,11 +24,12 @@
 - [ ] Weekly reflection
 
 ### Week 5
-- [ ] Document application flow in text and pictures. (Figma)
+- [ ] Determine possible Web Services or APIs to use
+- [ ] Document application flow (Figma)
 - [ ] Build index JSP
 - [ ] Build user register JSP
 - [ ] Build login JSP
-- [ ] Build user edit JSP
+- [ ] Build profile edit JSP
 - [ ] Build generator output JSP
 - [ ] Build add series JSP
 - [ ] Build add episode JSP
@@ -75,53 +75,33 @@
 
 ### Week 9
 - [ ] Complete outstanding MVP elements
-- [ ] Outline elements beyond MVP and build backlog
+- [ ] Create episode detail modal code
+- [ ] Incorporate modal code into site display
+- [ ] Develop "in progress" status change query code
+- [ ] Develop "watched" status change query code
+- [ ] Develop "reset viewing" status change query code
+- [ ] Develop "reset all" status change query code in profile page
 - [ ] Weekly reflection
 
 ### Week 10
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
+- [ ] Distribute link to site for external testing
+- [ ] Solicit feedback on site functionality
+- [ ] Document user testing and feedback in project documentation
 - [ ] Weekly reflection
 
 ### Week 11
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
 - [ ] x
 - [ ] Weekly reflection
 
 ### Week 12
 - [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
 - [ ] Weekly reflection
 
 ### Week 13
 - [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
 - [ ] Weekly reflection
 
 ### Week 14
-- [ ] x
-- [ ] x
-- [ ] x
-- [ ] x
 - [ ] x
 - [ ] Weekly reflection
 
