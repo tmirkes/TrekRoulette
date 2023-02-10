@@ -8,25 +8,24 @@ import javax.persistence.*;
  *
  * @author tlmirkes
  * @version 1.0
- * @since 2023-02-07
  */
 @Entity(name = "User")
-@Table(name = "USER")
+@Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private int id;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "user_name")
     private String userName;
-    @Column(name = "password_hash")
+    @Column(name = "password")
     private String passWord;
     @Column(name = "email")
     private String email;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private int id;
 
     /**
      * Constructor accepting no arguments
