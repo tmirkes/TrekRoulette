@@ -2,6 +2,7 @@ package trekroulette.persistence;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import trekroulette.entity.Episode;
 import trekroulette.entity.Series;
 import trekroulette.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,24 +40,11 @@ class SeriesDaoTest {
 
     @Test
     void editSeriesAndSeasonDataSuccess() {
-        // Get series by original seriesname
         Series originalSeries = dao.getSeriesBySeriesNameAndSeason("First",2);
-        logger.debug("original series loaded");
-        // Assign returned series to series object
-        // Copy the returned series to a new series object
         Series editedSeries = originalSeries;
-        logger.debug("edited set to equal original");
-        // Change the copied series's seriesname
         editedSeries.setSeriesName("WACKY");
-        logger.debug("edited series_name updated");
-        // Push the edit to the database
         dao.editSeriesData(editedSeries);
-        logger.debug("edited series written to database");
-        // Get series by new seriesname
         Series resultSeries = dao.getSeriesBySeriesNameAndSeason("WACKY",1);
-        logger.debug("edited series loaded");
-        // Assign returned series to series object
-        // Compare new and old seriess
         assertNotEquals(originalSeries, resultSeries);
     }
 }

@@ -8,16 +8,23 @@ import org.hibernate.Transaction;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
+/**
+ * DAO class for managing database interactions for the Episode class.
+ *
+ * Methods in class allow for retrieving, adding, and deleting Episode objects.  Full CRUD coverage is not possible due
+ * to the FK constraints on the episode table (the season_series_id field is the PK in the series_season table).
+ */
 public class EpisodeDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
     /**
-     * Using search parameter of episode's episode name, query the database and return all results matching that episode name.
+     * Query the database connection and retrieve results matching provided parameters.
      *
-     * @param episodeNameSearch episode-provided search episode name
-     * @return all results matching the search string
+     * @param epTitle title of the episode
+     * @param seriesSeasonId foreign key representing series and season of the episode in the season_series table
+     * @return Episode POJO matching search result data
      */
     public Episode getEpisodeByEpisodeNameAndSeason(String epTitle, int seriesSeasonId) {
         Session session = sessionFactory.openSession();
@@ -29,6 +36,12 @@ public class EpisodeDao {
         return episode;
     }
 
+    /**
+     * Query the database and add a record using attributes of the parameter Episode object.
+     *
+     * @param newEpisode Episode object representing the new data to be persisted
+     * @return primary key of new entry in the episode table
+     */
     public int addNewEpisode(Episode newEpisode) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -38,6 +51,11 @@ public class EpisodeDao {
         return id;
     }
 
+    /**
+     * Query the database and remove a record using attributes of the parameter Episode object.
+     *
+     * @param deleteEpisode Episode object representing the data to be removed from the episode table
+     */
     public void deleteEpisodeData(Episode deleteEpisode) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

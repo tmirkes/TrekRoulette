@@ -66,3 +66,33 @@
 [ERROR] 2023-02-12 13:50:38.476 [main] Database - java.sql.SQLSyntaxErrorException: Cannot truncate a table referenced in a foreign key constraint (`app_test`.`viewing`, CONSTRAINT `viewing_episode`)
 [ERROR] 2023-02-12 13:50:48.523 [main] Database - java.sql.SQLSyntaxErrorException: Cannot truncate a table referenced in a foreign key constraint (`app_test`.`episode`, CONSTRAINT `episode_series_season`)
 [ERROR] 2023-02-12 13:50:48.607 [main] Database - java.sql.SQLSyntaxErrorException: Cannot truncate a table referenced in a foreign key constraint (`app_test`.`viewing`, CONSTRAINT `viewing_episode`)
+[DEBUG] 2023-02-12 14:25:33.262 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 14:25:33.263 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 14:25:33.266 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 14:25:33.686 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 14:25:33.751 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 14:27:08.498 [main] SeriesDaoTest - original series loaded
+[DEBUG] 2023-02-12 14:27:08.507 [main] SeriesDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 14:27:08.507 [main] SeriesDaoTest - edited series_name updated
+[DEBUG] 2023-02-12 14:27:08.945 [main] SeriesDaoTest - edited series written to database
+[DEBUG] 2023-02-12 14:27:09.085 [main] SeriesDaoTest - edited series loaded
+[DEBUG] 2023-02-12 14:30:17.708 [main] SeriesDaoTest - original series loaded
+[DEBUG] 2023-02-12 14:30:17.713 [main] SeriesDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 14:30:17.715 [main] SeriesDaoTest - edited series_name updated
+[DEBUG] 2023-02-12 14:30:17.763 [main] SeriesDaoTest - edited series written to database
+[DEBUG] 2023-02-12 14:30:17.790 [main] SeriesDaoTest - edited series loaded
+[DEBUG] 2023-02-12 14:30:18.047 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 14:30:18.047 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 14:30:18.047 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 14:30:18.100 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 14:30:18.121 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 14:55:18.042 [main] SeriesDaoTest - original series loaded
+[DEBUG] 2023-02-12 14:55:18.053 [main] SeriesDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 14:55:18.056 [main] SeriesDaoTest - edited series_name updated
+[DEBUG] 2023-02-12 14:55:18.169 [main] SeriesDaoTest - edited series written to database
+[DEBUG] 2023-02-12 14:55:18.227 [main] SeriesDaoTest - edited series loaded
+[DEBUG] 2023-02-12 14:59:12.144 [main] SeriesDaoTest - original series loaded
+[DEBUG] 2023-02-12 14:59:12.150 [main] SeriesDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 14:59:12.151 [main] SeriesDaoTest - edited series_name updated
+[DEBUG] 2023-02-12 14:59:12.175 [main] SeriesDaoTest - edited series written to database
+[DEBUG] 2023-02-12 14:59:12.190 [main] SeriesDaoTest - edited series loaded
