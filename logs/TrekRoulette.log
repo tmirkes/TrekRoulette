@@ -1,0 +1,68 @@
+[ERROR] 2023-02-10 17:05:18.638 [main] Database - java.sql.SQLException: Column count doesn't match value count at row 1
+[ERROR] 2023-02-10 17:05:19.927 [main] Database - java.sql.SQLException: Column count doesn't match value count at row 1
+[ERROR] 2023-02-10 17:05:20.563 [main] Database - java.sql.SQLException: Column count doesn't match value count at row 1
+[ERROR] 2023-02-10 17:09:06.460 [main] Database - java.sql.SQLException: Column count doesn't match value count at row 1
+[ERROR] 2023-02-10 17:09:07.832 [main] Database - java.sql.SQLException: Column count doesn't match value count at row 1
+[ERROR] 2023-02-10 17:09:08.377 [main] Database - java.sql.SQLException: Column count doesn't match value count at row 1
+[DEBUG] 2023-02-12 12:07:27.837 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 12:07:27.847 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 12:07:27.847 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 12:07:28.043 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 12:07:28.069 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 12:08:22.162 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 12:08:22.163 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 12:08:22.163 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 12:08:22.310 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 12:08:22.367 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 12:09:00.717 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 12:09:00.735 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 12:09:00.735 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 12:09:00.915 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 12:09:00.954 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 12:09:26.969 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 12:09:26.976 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 12:09:26.977 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 12:09:27.201 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 12:09:27.276 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 12:09:51.392 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 12:09:51.397 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 12:09:51.397 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 12:09:51.669 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 12:09:51.744 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 12:18:38.872 [main] UserDaoTest - original user loaded
+[DEBUG] 2023-02-12 12:18:38.875 [main] UserDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 12:18:38.875 [main] UserDaoTest - edited user_name updated
+[DEBUG] 2023-02-12 12:18:39.111 [main] UserDaoTest - edited user written to database
+[DEBUG] 2023-02-12 12:18:39.163 [main] UserDaoTest - edited user loaded
+[DEBUG] 2023-02-12 12:41:36.640 [main] SeriesDaoTest - original series loaded
+[DEBUG] 2023-02-12 12:41:36.641 [main] SeriesDaoTest - edited set to equal original
+[DEBUG] 2023-02-12 12:41:36.641 [main] SeriesDaoTest - edited series_name updated
+[DEBUG] 2023-02-12 12:41:36.715 [main] SeriesDaoTest - edited series written to database
+[DEBUG] 2023-02-12 12:41:36.741 [main] SeriesDaoTest - edited series loaded
+[ERROR] 2023-02-12 12:51:13.525 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 12:52:12.233 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[ERROR] 2023-02-12 12:53:03.604 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[ERROR] 2023-02-12 12:54:36.561 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 12:54:44.809 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 12:55:36.241 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[DEBUG] 2023-02-12 12:55:36.265 [main] EpisodeDaoTest - original episode loaded
+[DEBUG] 2023-02-12 12:55:36.265 [main] EpisodeDaoTest - edited set to equal original
+[ERROR] 2023-02-12 13:07:03.931 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:07:11.877 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:08:03.155 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[ERROR] 2023-02-12 13:13:08.648 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:13:20.424 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:14:11.734 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[ERROR] 2023-02-12 13:16:07.885 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:16:15.245 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:17:06.477 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[ERROR] 2023-02-12 13:46:33.564 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:46:46.937 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:47:38.450 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[ERROR] 2023-02-12 13:48:24.974 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:48:35.278 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`app_test`.`episode`, CONSTRAINT `episode_series_season` FOREIGN KEY (`series_season_id`) REFERENCES `series_season` (`id`))
+[ERROR] 2023-02-12 13:49:26.712 [main] Database - com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Lock wait timeout exceeded; try restarting transaction
+[ERROR] 2023-02-12 13:50:38.399 [main] Database - java.sql.SQLSyntaxErrorException: Cannot truncate a table referenced in a foreign key constraint (`app_test`.`episode`, CONSTRAINT `episode_series_season`)
+[ERROR] 2023-02-12 13:50:38.476 [main] Database - java.sql.SQLSyntaxErrorException: Cannot truncate a table referenced in a foreign key constraint (`app_test`.`viewing`, CONSTRAINT `viewing_episode`)
+[ERROR] 2023-02-12 13:50:48.523 [main] Database - java.sql.SQLSyntaxErrorException: Cannot truncate a table referenced in a foreign key constraint (`app_test`.`episode`, CONSTRAINT `episode_series_season`)
+[ERROR] 2023-02-12 13:50:48.607 [main] Database - java.sql.SQLSyntaxErrorException: Cannot truncate a table referenced in a foreign key constraint (`app_test`.`viewing`, CONSTRAINT `viewing_episode`)

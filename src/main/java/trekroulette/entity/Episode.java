@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @version 1.0
  */
 @Entity(name = "Episode")
-@Table(name = "episode")
+@Table(name = "episode", schema = "app_test")
 public class Episode {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
@@ -28,6 +28,7 @@ public class Episode {
 
     /**
      * Constructor accepting arguments for instance variables
+     *
      * @param epTitle User's first name
      * @param seriesSeasonId User's last name
      */
@@ -36,22 +37,47 @@ public class Episode {
         this.seriesSeasonId = seriesSeasonId;
     }
 
+    /**
+     * id getter
+     *
+     * @return value of id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * epTitle getter
+     *
+     * @return value of epTitle
+     */
     public String getEpTitle() {
         return epTitle;
     }
 
+    /**
+     * epTitle setter
+     *
+     * @param epTitle title of episode
+     */
     public void setEpTitle(String epTitle) {
         this.epTitle = epTitle;
     }
 
+    /**
+     * seriesSeasonId getter
+     *
+     * @return value of seriesSeasonId
+     */
     public int getSeriesSeasonId() {
         return seriesSeasonId;
     }
 
+    /**
+     * seriesSeasonId setter
+     *
+     * @param seriesSeasonId series_season id value from series_season table
+     */
     public void setSeriesSeasonId(int seriesSeasonId) {
         this.seriesSeasonId = seriesSeasonId;
     }
@@ -60,9 +86,8 @@ public class Episode {
      * Print current value of instance variables to console
      */
     public String toString() {
-        String printer = "id: " + this.id +
+        return "id: " + this.id +
                 "\nepTitle: " + this.epTitle +
                 "\nseriesSeasonId: " + this.seriesSeasonId;
-        return printer;
     }
 }

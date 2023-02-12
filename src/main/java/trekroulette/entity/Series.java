@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @version 1.0
  */
 @Entity(name = "Series")
-@Table(name = "series_season")
+@Table(name = "series_season", schema = "app_test")
 public class Series {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
@@ -28,6 +28,7 @@ public class Series {
 
     /**
      * Constructor accepting arguments for instance variables
+     *
      * @param seriesName name of series
      * @param season series season
      */
@@ -36,22 +37,47 @@ public class Series {
         this.season = season;
     }
 
+    /**
+     * id getter
+     *
+     * @return value of id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * seriesName getter
+     *
+     * @return value of seriesName
+     */
     public String getSeriesName() {
         return seriesName;
     }
 
+    /**
+     * seriesName setter
+     *
+     * @param seriesName name of series
+     */
     public void setSeriesName(String seriesName) {
         this.seriesName = seriesName;
     }
 
+    /**
+     * season getter
+     *
+     * @return value of season
+     */
     public int getSeason() {
         return season;
     }
 
+    /**
+     * season setter
+     *
+     * @param season number of season
+     */
     public void setSeason(int season) {
         this.season = season;
     }
@@ -60,9 +86,8 @@ public class Series {
      * Print current value of instance variables to console
      */
     public String toString() {
-        String printer = "id: " + this.id +
+        return "id: " + this.id +
                 "\nseriesName: " + this.seriesName +
                 "\nseason: " + this.season;
-        return printer;
     }
 }

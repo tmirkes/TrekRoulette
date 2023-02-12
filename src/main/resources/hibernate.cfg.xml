@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/app</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/app_test</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">student</property>
 
@@ -14,5 +14,7 @@
         <property name="hibernate.c3p0.idle_test_period">3000</property>
 
         <mapping class="trekroulette.entity.User"/>
+        <mapping class="trekroulette.entity.Series"/>
+        <mapping class="trekroulette.entity.Episode"/>
     </session-factory>
 </hibernate-configuration>
