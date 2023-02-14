@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @version 1.0
  */
 @Entity(name = "Episode")
-@Table(name = "episode", schema = "app_test")
+@Table(name = "episode", schema = "testing")
 public class Episode {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="native")

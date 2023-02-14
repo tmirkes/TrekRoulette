@@ -96,3 +96,91 @@
 [DEBUG] 2023-02-12 14:59:12.151 [main] SeriesDaoTest - edited series_name updated
 [DEBUG] 2023-02-12 14:59:12.175 [main] SeriesDaoTest - edited series written to database
 [DEBUG] 2023-02-12 14:59:12.190 [main] SeriesDaoTest - edited series loaded
+[ERROR] 2023-02-14 11:42:16.229 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:42:25.486 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:42:25.917 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:42:26.479 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:42:26.688 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:43:29.490 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:43:39.473 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:43:39.940 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:43:40.241 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:43:40.387 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:46:34.087 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:46:42.610 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:46:42.966 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:46:43.204 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:46:43.362 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:52:29.654 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:52:38.325 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:52:38.803 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:52:38.995 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:52:39.132 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:54:08.373 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:54:16.009 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:54:16.292 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:54:16.462 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:54:16.550 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:02.848 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:11.641 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:12.092 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:12.259 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:12.411 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:50.829 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:58.975 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:59.507 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:59.720 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:57:59.848 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:58:42.567 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:58:51.005 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:58:51.395 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:58:51.498 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 11:58:51.597 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:04:13.144 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:04:24.617 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:04:25.003 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:04:25.163 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:04:25.263 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:05:10.064 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:05:18.877 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:05:19.446 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:05:19.632 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:05:19.739 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:06:04.104 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:06:12.685 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:06:13.112 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:06:13.276 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:06:13.383 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:09:32.497 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:09:40.244 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:09:40.563 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:09:40.702 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:09:40.822 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:14:56.873 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:15:05.712 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:15:06.129 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:15:06.281 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[ERROR] 2023-02-14 12:15:06.445 [main] Database - java.sql.SQLException: Statement.executeUpdate() or Statement.executeLargeUpdate() cannot issue statements that produce result sets.
+[TRACE] 2023-02-14 12:22:26.588 [main] RoleDaoTest - Role{id=8, roleName='Clown'}
+[TRACE] 2023-02-14 12:22:26.592 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[TRACE] 2023-02-14 12:22:26.718 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[TRACE] 2023-02-14 12:27:25.103 [main] RoleDaoTest - Role{id=8, roleName='Clown'}
+[TRACE] 2023-02-14 12:27:25.120 [main] RoleDaoTest - Role{id=8, roleName='Clown'}
+[TRACE] 2023-02-14 12:27:25.121 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[TRACE] 2023-02-14 12:27:25.289 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[TRACE] 2023-02-14 12:35:27.240 [main] RoleDaoTest - Role{id=8, roleName='Clown'}
+[TRACE] 2023-02-14 12:35:27.242 [main] RoleDaoTest - Role{id=8, roleName='Clown'}
+[TRACE] 2023-02-14 12:35:27.242 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[TRACE] 2023-02-14 12:35:27.543 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[TRACE] 2023-02-14 12:36:46.765 [main] RoleDaoTest - Role{id=8, roleName='Clown'}
+[TRACE] 2023-02-14 12:36:46.768 [main] RoleDaoTest - Role{id=8, roleName='Clown'}
+[TRACE] 2023-02-14 12:36:46.769 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[TRACE] 2023-02-14 12:36:46.984 [main] RoleDaoTest - Role{id=8, roleName='Executive'}
+[INFO ] 2023-02-14 14:44:04.990 [main] SynopsisDaoTest - So much happening
+[INFO ] 2023-02-14 14:44:04.991 [main] SynopsisDaoTest - So much happening
+[INFO ] 2023-02-14 14:44:04.991 [main] SynopsisDaoTest - They just chill for a while
+[INFO ] 2023-02-14 14:44:05.020 [main] SynopsisDaoTest - They just chill for a while
+[INFO ] 2023-02-14 14:45:17.590 [main] SynopsisDaoTest - So much happening
+[INFO ] 2023-02-14 14:45:17.592 [main] SynopsisDaoTest - So much happening
+[INFO ] 2023-02-14 14:45:17.595 [main] SynopsisDaoTest - They just chill for a while
+[INFO ] 2023-02-14 14:45:17.621 [main] SynopsisDaoTest - They just chill for a while

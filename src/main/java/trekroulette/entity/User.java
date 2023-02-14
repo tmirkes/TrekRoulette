@@ -11,7 +11,7 @@ import javax.persistence.*;
  * @version 1.0
  */
 @Entity(name = "User")
-@Table(name = "user", schema = "app_test")
+@Table(name = "user", schema = "testing")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="native")

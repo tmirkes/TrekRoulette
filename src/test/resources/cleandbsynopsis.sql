@@ -1,0 +1,13 @@
+ALTER TABLE synopsis DISABLE KEYS;
+SET foreign_key_checks = 0;
+TRUNCATE TABLE synopsis;
+INSERT INTO synopsis (summary, episode_id) VALUES ('Things happened', 1);
+INSERT INTO synopsis (summary, episode_id) VALUES ('Other things happened', 2);
+INSERT INTO synopsis (summary, episode_id) VALUES ('That first thing happened again', 3);
+INSERT INTO synopsis (summary, episode_id) VALUES ('Nothing happened', 4);
+INSERT INTO synopsis (summary, episode_id) VALUES ('So much happening', 5);
+INSERT INTO synopsis (summary, episode_id) VALUES ('One person happened, no one else did', 6);
+INSERT INTO synopsis (summary, episode_id) VALUES ('EVERYTHING', 7);
+INSERT INTO synopsis (summary, episode_id) VALUES ('All of it ended', 8);
+SET foreign_key_checks = 1;
+ALTER TABLE synopsis ENABLE KEYS;
