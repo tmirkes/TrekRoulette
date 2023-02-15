@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-02-14 16:19:16.418
+-- Last modification date: 2023-02-15 20:36:42.97
 
 -- foreign keys
 ALTER TABLE credited
@@ -53,10 +53,8 @@ DROP TABLE viewing;
 
 -- End of file.
 
-
-
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-02-14 16:19:16.418
+-- Last modification date: 2023-02-15 20:36:42.97
 
 -- tables
 -- Table: credited
@@ -79,15 +77,16 @@ CREATE TABLE episode (
 
 -- Table: ownership
 CREATE TABLE ownership (
+    id int  NOT NULL AUTO_INCREMENT,
     user_id int  NOT NULL,
     series_season_id int  NOT NULL,
-    CONSTRAINT ownership_pkey PRIMARY KEY (user_id,series_season_id)
+    CONSTRAINT ownership_pkey PRIMARY KEY (id)
 );
 
 -- Table: role
 CREATE TABLE role (
     id int  NOT NULL AUTO_INCREMENT,
-    role_name varchar(50)  NOT NULL,
+    role_name int  NOT NULL,
     CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
@@ -132,11 +131,12 @@ CREATE TABLE user (
 
 -- Table: viewing
 CREATE TABLE viewing (
+    id int  NOT NULL AUTO_INCREMENT,
     user_id int  NOT NULL,
     series_season_id int  NOT NULL,
     episode_id int  NOT NULL,
     status_id int  NOT NULL,
-    CONSTRAINT viewing_pkey PRIMARY KEY (status_id,episode_id,user_id,series_season_id)
+    CONSTRAINT viewing_pkey PRIMARY KEY (id)
 );
 
 -- foreign keys

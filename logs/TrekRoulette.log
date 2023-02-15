@@ -184,3 +184,36 @@
 [INFO ] 2023-02-14 14:45:17.592 [main] SynopsisDaoTest - So much happening
 [INFO ] 2023-02-14 14:45:17.595 [main] SynopsisDaoTest - They just chill for a while
 [INFO ] 2023-02-14 14:45:17.621 [main] SynopsisDaoTest - They just chill for a while
+[ERROR] 2023-02-15 15:41:32.884 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:41:44.611 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:41:45.028 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:41:45.598 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:41:45.864 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:44:54.042 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:45:04.491 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:45:04.878 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:45:05.254 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:45:05.455 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:48:03.302 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:48:15.348 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:48:15.736 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:48:16.245 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 15:48:17.036 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:19:03.044 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:19:18.168 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:19:18.986 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:19:19.653 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:19:20.576 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:19:21.120 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:20:19.066 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:20:29.710 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:20:30.226 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:20:30.610 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:20:31.144 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:20:31.709 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:22:59.397 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:23:18.080 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:23:18.703 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:23:19.314 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:23:19.862 [main] Database - java.lang.NullPointerException
+[ERROR] 2023-02-15 16:23:20.516 [main] Database - java.lang.NullPointerException

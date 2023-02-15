@@ -19,5 +19,8 @@
         <mapping class="trekroulette.entity.Credit"/>
         <mapping class="trekroulette.entity.Role"/>
         <mapping class="trekroulette.entity.Synopsis"/>
+        <mapping class="trekroulette.entity.View"/>
+        <mapping class="trekroulette.entity.Status"/>
+        <mapping class="trekroulette.entity.Possession"/>
     </session-factory>
 </hibernate-configuration>
