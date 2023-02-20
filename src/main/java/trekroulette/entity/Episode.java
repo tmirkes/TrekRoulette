@@ -1,93 +1,110 @@
 package trekroulette.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Objects;
 
-/**
- * POJO representing episode data within the Trek Roulette application
- *
- * @author tlmirkes
- * @version 1.0
- */
 @Entity(name = "Episode")
-@Table(name = "episode", schema = "testing")
+@Table(name = "episode")
 public class Episode {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @Column(name = "id")
     private int id;
-    @Column(name = "ep_title")
-    private String epTitle;
-    @Column(name = "series_season_id")
+    @Basic
+    @Column(name = "title")
+    private String title;
+    @Basic
+    @Column(name = "synopsis_id", insertable = false, updatable = false)
+    private int synopsisId;
+    @Basic
+    @Column(name = "series_season_id", insertable = false, updatable = false)
     private int seriesSeasonId;
+    @OneToMany(mappedBy = "episodeByEpisodeId")
+    private Collection<Credit> creditsById;
+    @ManyToOne
+    @JoinColumn(name = "synopsis_id", referencedColumnName = "id", nullable = false)
+    private Synopsis synopsisBySynopsisId;
+    @ManyToOne
+    @JoinColumn(name = "series_season_id", referencedColumnName = "id", nullable = false)
+    private SeriesSeason seriesSeasonBySeriesSeasonId;
+    @OneToMany(mappedBy = "episodeByEpisodeId")
+    private Collection<View> viewsById;
 
-    /**
-     * Constructor accepting no arguments
-     */
-    public Episode() {}
-
-    /**
-     * Constructor accepting arguments for instance variables
-     *
-     * @param epTitle User's first name
-     * @param seriesSeasonId User's last name
-     */
-    public Episode(String epTitle, int seriesSeasonId) {
-        this.epTitle = epTitle;
-        this.seriesSeasonId = seriesSeasonId;
-    }
-
-    /**
-     * id getter
-     *
-     * @return value of id
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * epTitle getter
-     *
-     * @return value of epTitle
-     */
-    public String getEpTitle() {
-        return epTitle;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    /**
-     * epTitle setter
-     *
-     * @param epTitle title of episode
-     */
-    public void setEpTitle(String epTitle) {
-        this.epTitle = epTitle;
+    public String getTitle() {
+        return title;
     }
 
-    /**
-     * seriesSeasonId getter
-     *
-     * @return value of seriesSeasonId
-     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getSynopsisId() {
+        return synopsisId;
+    }
+
+    public void setSynopsisId(int synopsisId) {
+        this.synopsisId = synopsisId;
+    }
+
     public int getSeriesSeasonId() {
         return seriesSeasonId;
     }
 
-    /**
-     * seriesSeasonId setter
-     *
-     * @param seriesSeasonId series_season id value from series_season table
-     */
     public void setSeriesSeasonId(int seriesSeasonId) {
         this.seriesSeasonId = seriesSeasonId;
     }
 
-    /**
-     * Print current value of instance variables to console
-     */
-    public String toString() {
-        return "id: " + this.id +
-                "\nepTitle: " + this.epTitle +
-                "\nseriesSeasonId: " + this.seriesSeasonId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Episode episode = (Episode) o;
+        return id == episode.id && synopsisId == episode.synopsisId && seriesSeasonId == episode.seriesSeasonId && Objects.equals(title, episode.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, synopsisId, seriesSeasonId);
+    }
+
+    public Collection<Credit> getCreditsById() {
+        return creditsById;
+    }
+
+    public void setCreditsById(Collection<Credit> creditsById) {
+        this.creditsById = creditsById;
+    }
+
+    public Synopsis getSynopsisBySynopsisId() {
+        return synopsisBySynopsisId;
+    }
+
+    public void setSynopsisBySynopsisId(Synopsis synopsisBySynopsisId) {
+        this.synopsisBySynopsisId = synopsisBySynopsisId;
+    }
+
+    public SeriesSeason getSeriesSeasonBySeriesSeasonId() {
+        return seriesSeasonBySeriesSeasonId;
+    }
+
+    public void setSeriesSeasonBySeriesSeasonId(SeriesSeason seriesSeasonBySeriesSeasonId) {
+        this.seriesSeasonBySeriesSeasonId = seriesSeasonBySeriesSeasonId;
+    }
+
+    public Collection<View> getViewsById() {
+        return viewsById;
+    }
+
+    public void setViewsById(Collection<View> viewsById) {
+        this.viewsById = viewsById;
     }
 }

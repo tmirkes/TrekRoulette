@@ -70,13 +70,15 @@ public class Database {
             Class.forName("com.mysql.jdbc.Driver");
             connect();
             stmt = connection.createStatement();
-
+            logger.trace("statment = "  + stmt);
             while (true) {
                 String sql = br.readLine();
+                logger.trace("query string = " + sql);
                 if (sql == null) {
                     break;
                 }
-                stmt.executeUpdate(sql);
+                int returnValue = stmt.executeUpdate(sql);
+                logger.trace("returnValue = " + returnValue);
             }
         } catch (SQLException se) {
             logger.error(se);

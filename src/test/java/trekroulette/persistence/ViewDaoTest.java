@@ -4,95 +4,101 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import trekroulette.entity.View;
+import trekroulette.entity.*;
 import trekroulette.test.util.Database;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewDaoTest {
-    ViewDao dao;
+    GenericDao<View> testingDao;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
-        database.runSQL("cleandb.sql");
-        database.runSQL("cleandbseries.sql");
-        database.runSQL("cleandbepisode.sql");
-        database.runSQL("cleandbstatus.sql");
-        database.runSQL("cleandbview.sql");
-        dao = new ViewDao();
+        database.runSQL("cleandbtestdata.sql");
+        testingDao = new GenericDao<>(View.class);
     }
 
     @Test
-    void getViewByID() {
-        View result = dao.getViewById(1);
-        assertNotNull(result);
-        assertEquals(1, result.getUserId());
-        assertEquals(3, result.getSeriesSeasonId());
-        assertEquals(1, result.getEpisodeId());
-        assertEquals(1, result.getStatusId());
+    void getById() {
+        View testView = (View)testingDao.getById(1);
+        assertNotNull(testView);
+        assertEquals(1, testView.getId());
+        assertEquals(1, testView.getStatusId());
+        assertEquals(1, testView.getUserId());
+        assertEquals(1, testView.getEpisodeId());
     }
 
     @Test
-    void getViewByUserId() {
-        List<View> result = dao.getViewByUserId(1);
-        View firstResult = result.get(0);
-        assertEquals(1, firstResult.getUserId());
+    void getByPropertyEqual() {
+        List<View> ViewList = testingDao.getByPropertyEqual("userId", "4");
+        assertNotNull(ViewList);
+        assertEquals(1, ViewList.size());
+        View resultView = (View)ViewList.get(0);
+        assertNotNull(resultView);
+        assertEquals(5, resultView.getId());
+        assertEquals(1, resultView.getStatusId());
+        assertEquals(5, resultView.getEpisodeId());
     }
 
     @Test
-    void getViewBySeriesSeasonId() {
-        List<View> result = dao.getViewBySeriesSeasonId(1);
-        View firstResult = result.get(0);
-        assertEquals(1, firstResult.getSeriesSeasonId());
+    void getAll() {
+        List<View> ViewList = testingDao.getAll();
+        assertNotNull(ViewList);
+        assertEquals(5, ViewList.size());
     }
 
     @Test
-    void getViewByEpisodeId() {
-        List<View> result = dao.getViewByEpisodeId(1);
-        View firstResult = result.get(0);
-        assertEquals(1, firstResult.getEpisodeId());
+    void addEntity() {
+        View testView = new View(3,2,4);
+        assertNotNull(testView);
+        int id = testingDao.addEntity(testView);
+        assertNotEquals(0, id);
+        View newView = (View)testingDao.getById(id);
+        assertNotNull(newView);
+        assertEquals(3, newView.getStatusId());
+        assertEquals(2, newView.getUserId());
+        assertEquals(4, newView.getEpisodeId());
     }
 
     @Test
-    void getViewByStatusId() {
-        List<View> result = dao.getViewByStatusId(1);
-        View firstResult = result.get(0);
-        assertEquals(1, firstResult.getStatusId());
+    void editEntity() {
+        View testView = (View)testingDao.getById(5);
+        logger.error("Orig id: " + testView.getId());
+        logger.error("Orig epId: " + testView.getEpisodeId());
+        logger.error("Orig status: " + testView.getStatusId());
+        logger.error("Orig userId: " + testView.getUserId());
+        assertNotNull(testView);
+        int originalStatus = testView.getStatusId();
+        logger.error("Orig status extract: " + originalStatus);
+        int newStatus = 3;
+        View editView = testView;
+        logger.error("Copy id: " + editView.getId());
+        logger.error("Copy epId: " + editView.getEpisodeId());
+        logger.error("Copy status: " + editView.getStatusId());
+        logger.error("Copy userId: " + editView.getUserId());
+        assertNotNull(editView);
+        editView.setStatusId(newStatus);
+        logger.error("Edited id: " + editView.getId());
+        logger.error("Edited epId: " + editView.getEpisodeId());
+        logger.error("Edited status: " + editView.getStatusId());
+        logger.error("Edited userId: " + editView.getUserId());
+        assertEquals(newStatus, editView.getStatusId());
+        testingDao.editEntity(editView);
+        View updatedView = (View)testingDao.getById(5);
+        logger.error("Queried id: " + updatedView.getId());
+        logger.error("Queried epId: " + updatedView.getEpisodeId());
+        logger.error("Queried status: " + updatedView.getStatusId());
+        logger.error("Queried userId: " + updatedView.getUserId());
+        assertNotEquals(originalStatus, updatedView.getStatusId());
     }
 
     @Test
-    void addNewView() {
-        View testView = new View(1,2,3,4);
-        int addId = dao.addNewView(testView);
-        assertNotEquals(0, addId);
-        View viewFound = dao.getViewById(addId);
-        assertNotNull(viewFound);
-        assertEquals(1, viewFound.getUserId());
-        assertEquals(2, viewFound.getSeriesSeasonId());
-        assertEquals(3, viewFound.getEpisodeId());
-        assertEquals(4, viewFound.getStatusId());
-    }
-
-    @Test
-    void editViewData() {
-        View originalView = dao.getViewById(4);
-        View editedView = originalView;
-        editedView.setStatusId(1);
-        dao.editViewData(editedView);
-        View finalView = dao.getViewById(4);
-        assertNotNull(finalView);
-        assertEquals(1, finalView.getStatusId());
-    }
-
-    @Test
-    void deleteViewData() {
-        View deleteView = dao.getViewById(3);
-        assertNotNull(deleteView);
-        dao.deleteViewData(deleteView);
-        assertNull(dao.getViewById(3));
+    void deleteEntity() {
+        View testView = (View)testingDao.getById(4);
+        assertNotNull(testView);
+        testingDao.deleteEntity(testView);
+        assertNull(testingDao.getById(4));
     }
 }

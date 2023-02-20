@@ -4,17 +4,20 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity(name = "Role")
-@Table(name = "role")
-public class Role {
+@Entity(name = "Person")
+@Table(name = "person")
+public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "role_name")
-    private String roleName;
-    @OneToMany(mappedBy = "roleByRoleId")
+    @Column(name = "first_name")
+    private String firstName;
+    @Basic
+    @Column(name = "last_name")
+    private String lastName;
+    @OneToMany(mappedBy = "personByPersonId")
     private Collection<Credit> creditsById;
 
     public int getId() {
@@ -25,25 +28,33 @@ public class Role {
         this.id = id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Role role = (Role) o;
-        return id == role.id && Objects.equals(roleName, role.roleName);
+        Person person = (Person) o;
+        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, roleName);
+        return Objects.hash(id, firstName, lastName);
     }
 
     public Collection<Credit> getCreditsById() {

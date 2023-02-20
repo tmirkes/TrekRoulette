@@ -1,43 +1,45 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-02-15 20:36:42.97
+-- Last modification date: 2023-02-17 17:22:44.207
 
 -- foreign keys
-ALTER TABLE credited
-    DROP FOREIGN KEY credited_episode;
+ALTER TABLE credit
+    DROP FOREIGN KEY credit_episode;
 
-ALTER TABLE credited
-    DROP FOREIGN KEY credited_role;
+ALTER TABLE credit
+    DROP FOREIGN KEY credit_person;
+
+ALTER TABLE credit
+    DROP FOREIGN KEY credit_role;
 
 ALTER TABLE episode
     DROP FOREIGN KEY episode_series_season;
 
-ALTER TABLE ownership
-    DROP FOREIGN KEY ownership_series_season;
+ALTER TABLE episode
+    DROP FOREIGN KEY episode_synopsis;
 
-ALTER TABLE ownership
-    DROP FOREIGN KEY ownership_user;
+ALTER TABLE own
+    DROP FOREIGN KEY own_series_season;
 
-ALTER TABLE synopsis
-    DROP FOREIGN KEY synopsis_episode;
+ALTER TABLE own
+    DROP FOREIGN KEY own_user;
 
-ALTER TABLE viewing
-    DROP FOREIGN KEY viewing_episode;
+ALTER TABLE view
+    DROP FOREIGN KEY view_episode;
 
-ALTER TABLE viewing
-    DROP FOREIGN KEY viewing_series_season;
+ALTER TABLE view
+    DROP FOREIGN KEY view_status;
 
-ALTER TABLE viewing
-    DROP FOREIGN KEY viewing_status;
-
-ALTER TABLE viewing
-    DROP FOREIGN KEY viewing_user;
+ALTER TABLE view
+    DROP FOREIGN KEY view_user;
 
 -- tables
-DROP TABLE credited;
+DROP TABLE credit;
 
 DROP TABLE episode;
 
-DROP TABLE ownership;
+DROP TABLE own;
+
+DROP TABLE person;
 
 DROP TABLE role;
 
@@ -49,44 +51,52 @@ DROP TABLE synopsis;
 
 DROP TABLE user;
 
-DROP TABLE viewing;
+DROP TABLE view;
 
 -- End of file.
 
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-02-15 20:36:42.97
+-- Last modification date: 2023-02-17 17:22:44.207
 
 -- tables
--- Table: credited
-CREATE TABLE credited (
+-- Table: credit
+CREATE TABLE credit (
     id int  NOT NULL AUTO_INCREMENT,
-    first_name varchar(30)  NOT NULL,
-    last_name varchar(30)  NOT NULL,
     episode_id int  NOT NULL,
+    person_id int  NOT NULL,
     role_id int  NOT NULL,
-    CONSTRAINT credited_pk PRIMARY KEY (id)
+    CONSTRAINT credit_pk PRIMARY KEY (id)
 );
 
 -- Table: episode
 CREATE TABLE episode (
     id int  NOT NULL AUTO_INCREMENT,
-    ep_title varchar(50)  NOT NULL,
+    title varchar(100)  NOT NULL,
+    synopsis_id int  NOT NULL,
     series_season_id int  NOT NULL,
     CONSTRAINT episode_pk PRIMARY KEY (id)
 );
 
--- Table: ownership
-CREATE TABLE ownership (
+-- Table: own
+CREATE TABLE own (
     id int  NOT NULL AUTO_INCREMENT,
     user_id int  NOT NULL,
     series_season_id int  NOT NULL,
     CONSTRAINT ownership_pkey PRIMARY KEY (id)
 );
 
+-- Table: person
+CREATE TABLE person (
+    id int  NOT NULL AUTO_INCREMENT,
+    first_name varchar(30)  NOT NULL,
+    last_name varchar(30)  NOT NULL,
+    CONSTRAINT person_pk PRIMARY KEY (id)
+);
+
 -- Table: role
 CREATE TABLE role (
     id int  NOT NULL AUTO_INCREMENT,
-    role_name int  NOT NULL,
+    role_name varchar(30)  NOT NULL,
     CONSTRAINT role_pk PRIMARY KEY (id)
 );
 
@@ -109,7 +119,6 @@ CREATE TABLE status (
 CREATE TABLE synopsis (
     id int  NOT NULL AUTO_INCREMENT,
     summary text  NOT NULL,
-    episode_id int  NOT NULL,
     CONSTRAINT synopsis_pk PRIMARY KEY (id)
 );
 
@@ -129,55 +138,54 @@ CREATE TABLE user (
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
--- Table: viewing
-CREATE TABLE viewing (
+-- Table: view
+CREATE TABLE view (
     id int  NOT NULL AUTO_INCREMENT,
-    user_id int  NOT NULL,
-    series_season_id int  NOT NULL,
-    episode_id int  NOT NULL,
     status_id int  NOT NULL,
+    user_id int  NOT NULL,
+    episode_id int  NOT NULL,
     CONSTRAINT viewing_pkey PRIMARY KEY (id)
 );
 
 -- foreign keys
--- Reference: credited_episode (table: credited)
-ALTER TABLE credited ADD CONSTRAINT credited_episode FOREIGN KEY credited_episode (episode_id)
+-- Reference: credit_episode (table: credit)
+ALTER TABLE credit ADD CONSTRAINT credit_episode FOREIGN KEY credit_episode (episode_id)
     REFERENCES episode (id);
 
--- Reference: credited_role (table: credited)
-ALTER TABLE credited ADD CONSTRAINT credited_role FOREIGN KEY credited_role (role_id)
+-- Reference: credit_person (table: credit)
+ALTER TABLE credit ADD CONSTRAINT credit_person FOREIGN KEY credit_person (person_id)
+    REFERENCES person (id);
+
+-- Reference: credit_role (table: credit)
+ALTER TABLE credit ADD CONSTRAINT credit_role FOREIGN KEY credit_role (role_id)
     REFERENCES role (id);
 
 -- Reference: episode_series_season (table: episode)
 ALTER TABLE episode ADD CONSTRAINT episode_series_season FOREIGN KEY episode_series_season (series_season_id)
     REFERENCES series_season (id);
 
--- Reference: ownership_series_season (table: ownership)
-ALTER TABLE ownership ADD CONSTRAINT ownership_series_season FOREIGN KEY ownership_series_season (series_season_id)
+-- Reference: episode_synopsis (table: episode)
+ALTER TABLE episode ADD CONSTRAINT episode_synopsis FOREIGN KEY episode_synopsis (synopsis_id)
+    REFERENCES synopsis (id);
+
+-- Reference: own_series_season (table: own)
+ALTER TABLE own ADD CONSTRAINT own_series_season FOREIGN KEY own_series_season (series_season_id)
     REFERENCES series_season (id);
 
--- Reference: ownership_user (table: ownership)
-ALTER TABLE ownership ADD CONSTRAINT ownership_user FOREIGN KEY ownership_user (user_id)
+-- Reference: own_user (table: own)
+ALTER TABLE own ADD CONSTRAINT own_user FOREIGN KEY own_user (user_id)
     REFERENCES user (id);
 
--- Reference: synopsis_episode (table: synopsis)
-ALTER TABLE synopsis ADD CONSTRAINT synopsis_episode FOREIGN KEY synopsis_episode (episode_id)
+-- Reference: view_episode (table: view)
+ALTER TABLE view ADD CONSTRAINT view_episode FOREIGN KEY view_episode (episode_id)
     REFERENCES episode (id);
 
--- Reference: viewing_episode (table: viewing)
-ALTER TABLE viewing ADD CONSTRAINT viewing_episode FOREIGN KEY viewing_episode (episode_id)
-    REFERENCES episode (id);
-
--- Reference: viewing_series_season (table: viewing)
-ALTER TABLE viewing ADD CONSTRAINT viewing_series_season FOREIGN KEY viewing_series_season (series_season_id)
-    REFERENCES series_season (id);
-
--- Reference: viewing_status (table: viewing)
-ALTER TABLE viewing ADD CONSTRAINT viewing_status FOREIGN KEY viewing_status (status_id)
+-- Reference: view_status (table: view)
+ALTER TABLE view ADD CONSTRAINT view_status FOREIGN KEY view_status (status_id)
     REFERENCES status (id);
 
--- Reference: viewing_user (table: viewing)
-ALTER TABLE viewing ADD CONSTRAINT viewing_user FOREIGN KEY viewing_user (user_id)
+-- Reference: view_user (table: view)
+ALTER TABLE view ADD CONSTRAINT view_user FOREIGN KEY view_user (user_id)
     REFERENCES user (id);
 
 -- End of file.

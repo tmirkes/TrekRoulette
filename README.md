@@ -24,7 +24,7 @@ Trek Roulette intends to make that random selection process less stressful, requ
   * [Star Trek API (STAPI)](https://mvnrepository.com/artifact/com.cezarykluczynski.stapi/stapi-client)
   * REST API (to support STAPI access)
 * **CSS**
-  * Bootstrap 5
+  * W3.CSS template
 * **Data Validation**
   * Bootstrap Validator
   * Hibernate validation (is this a thing? how does it work?)

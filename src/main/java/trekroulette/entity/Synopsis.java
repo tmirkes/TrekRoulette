@@ -1,32 +1,21 @@
 package trekroulette.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Objects;
 
-/**
- * POJO representing synopsis data within the Trek Roulette application
- *
- * @author tlmirkes
- * @version 1.0
- */
 @Entity(name = "Synopsis")
-@Table(name = "synopsis", schema = "testing")
+@Table(name = "synopsis")
 public class Synopsis {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @Column(name = "id")
     private int id;
+    @Basic
+    @Column(name = "summary")
     private String summary;
-    @Column(name = "episode_id")
-    private int episodeId;
-
-    public Synopsis() {
-    }
-
-    public Synopsis(String summary, int episodeId) {
-        this.summary = summary;
-        this.episodeId = episodeId;
-    }
+    @OneToMany(mappedBy = "synopsisBySynopsisId")
+    private Collection<Episode> episodesById;
 
     public int getId() {
         return id;
@@ -44,20 +33,24 @@ public class Synopsis {
         this.summary = summary;
     }
 
-    public int getEpisodeId() {
-        return episodeId;
-    }
-
-    public void setEpisodeId(int episodeId) {
-        this.episodeId = episodeId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Synopsis synopsis = (Synopsis) o;
+        return id == synopsis.id && Objects.equals(summary, synopsis.summary);
     }
 
     @Override
-    public String toString() {
-        return "Synopsis{" +
-                "id=" + id +
-                ", summary='" + summary + '\'' +
-                ", episodeId=" + episodeId +
-                '}';
+    public int hashCode() {
+        return Objects.hash(id, summary);
+    }
+
+    public Collection<Episode> getEpisodesById() {
+        return episodesById;
+    }
+
+    public void setEpisodesById(Collection<Episode> episodesById) {
+        this.episodesById = episodesById;
     }
 }

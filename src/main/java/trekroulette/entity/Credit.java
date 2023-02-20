@@ -1,39 +1,33 @@
 package trekroulette.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.Objects;
 
-/**
- * POJO representing episode credits data within the Trek Roulette application
- *
- * @author tlmirkes
- * @version 1.0
- */
 @Entity(name = "Credit")
-@Table(name = "credited", schema = "testing")
+@Table(name = "credit")
 public class Credit {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @Column(name = "id")
     private int id;
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
-    @Column(name = "episode_id")
+    @Basic
+    @Column(name = "episode_id", insertable = false, updatable = false)
     private int episodeId;
-    @Column(name = "role_id")
+    @Basic
+    @Column(name = "person_id", insertable = false, updatable = false)
+    private int personId;
+    @Basic
+    @Column(name = "role_id", insertable = false, updatable = false)
     private int roleId;
-
-    public Credit() {
-    }
-
-    public Credit(String firstName, String lastName, int episodeId, int roleId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.episodeId = episodeId;
-        this.roleId = roleId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "episode_id", referencedColumnName = "id", nullable = false)
+    private Episode episodeByEpisodeId;
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id", nullable = false)
+    private Person personByPersonId;
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+    private Role roleByRoleId;
 
     public int getId() {
         return id;
@@ -43,28 +37,20 @@ public class Credit {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public int getEpisodeId() {
         return episodeId;
     }
 
     public void setEpisodeId(int episodeId) {
         this.episodeId = episodeId;
+    }
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public int getRoleId() {
@@ -76,13 +62,39 @@ public class Credit {
     }
 
     @Override
-    public String toString() {
-        return "Credit{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", episodeId=" + episodeId +
-                ", roleId=" + roleId +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Credit credit = (Credit) o;
+        return id == credit.id && episodeId == credit.episodeId && personId == credit.personId && roleId == credit.roleId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, episodeId, personId, roleId);
+    }
+
+    public Episode getEpisodeByEpisodeId() {
+        return episodeByEpisodeId;
+    }
+
+    public void setEpisodeByEpisodeId(Episode episodeByEpisodeId) {
+        this.episodeByEpisodeId = episodeByEpisodeId;
+    }
+
+    public Person getPersonByPersonId() {
+        return personByPersonId;
+    }
+
+    public void setPersonByPersonId(Person personByPersonId) {
+        this.personByPersonId = personByPersonId;
+    }
+
+    public Role getRoleByRoleId() {
+        return roleByRoleId;
+    }
+
+    public void setRoleByRoleId(Role roleByRoleId) {
+        this.roleByRoleId = roleByRoleId;
     }
 }

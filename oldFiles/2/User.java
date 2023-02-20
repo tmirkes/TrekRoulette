@@ -1,44 +1,30 @@
 package trekroulette.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.Set;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.*;
 
 @Entity(name = "User")
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native", strategy = "native")
-    @Column(name = "id")
     private int id;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "email")
     private String email;
     @Column(name = "user_name")
     private String userName;
-    @Column(name = "password")
     private String password;
-    @Column(name = "privileges")
     private String privileges;
-    @Column(name = "created", insertable = false)
     private LocalDate created;
-    @Column(name = "last_login", insertable = false)
+    @Column(name = "last_login")
     private LocalDate lastLogin;
-    @Column(name = "deactivated", insertable = false)
     private LocalDate deactivated;
-    @Column(name = "active", insertable = false)
     private int active;
-    @OneToMany(mappedBy = "userByUserId", cascade = CascadeType.ALL)
-    private Set<Own> ownsById;
-    @OneToMany(mappedBy = "userByUserId", cascade = CascadeType.ALL)
-    private Set<View> viewsById;
 
     public User() {
     }
@@ -141,33 +127,19 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id && active == user.active && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(userName, user.userName) && Objects.equals(password, user.password) && Objects.equals(privileges, user.privileges) && Objects.equals(created, user.created) && Objects.equals(lastLogin, user.lastLogin) && Objects.equals(deactivated, user.deactivated);
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", privileges='" + privileges + '\'' +
+                ", created=" + created +
+                ", lastLogin=" + lastLogin +
+                ", deactivated=" + deactivated +
+                ", active=" + active +
+                '}';
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, userName, password, privileges, created, lastLogin, deactivated, active);
-    }
-
-    public Set<Own> getOwnsById() {
-        return ownsById;
-    }
-
-    public void setOwnsById(Set<Own> ownsById) {
-        this.ownsById = ownsById;
-    }
-
-    public Set<View> getViewsById() {
-        return viewsById;
-    }
-
-    public void setViewsById(Set<View> viewsById) {
-        this.viewsById = viewsById;
-    }
-
-    public void addOwn(Own own) {}
 }

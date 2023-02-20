@@ -2,6 +2,8 @@ package trekroulette.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * POJO representing series data within the Trek Roulette application
@@ -20,6 +22,8 @@ public class Series {
     private String seriesName;
     @Column(name = "season")
     private int season;
+
+
 
     /**
      * Constructor accepting no arguments
