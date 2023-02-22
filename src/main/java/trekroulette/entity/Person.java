@@ -1,25 +1,38 @@
 package trekroulette.entity;
 
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity(name = "Person")
 @Table(name = "person")
 public class Person {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // Instance variables
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int id;
-    @Basic
     @Column(name = "first_name")
     private String firstName;
-    @Basic
     @Column(name = "last_name")
     private String lastName;
-    @OneToMany(mappedBy = "personByPersonId")
-    private Collection<Credit> creditsById;
 
+    // 1-* associations
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Credit> credits = new HashSet<>();
+
+    // Constructors
+    public Person() {
+    }
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -44,24 +57,47 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public Set<Credit> getCredits() {
+        return credits;
+    }
+
+    public void setCredits(Set<Credit> credits) {
+        this.credits = credits;
+    }
+
+    // Entity Set<> managers
+    public void addCredit(Credit credit) {
+        credits.add(credit);
+        credit.setPerson(this);
+    }
+
+    public void removeCredit(Credit credit) {
+        credits.remove(credit);
+        credit.setPerson(null);
+    }
+
+    // equals() and hashCode() methods
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName);
+        return getId() == person.getId() && getFirstName().equals(person.getFirstName()) && getLastName().equals(person.getLastName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(getId(), getFirstName(), getLastName());
     }
 
-    public Collection<Credit> getCreditsById() {
-        return creditsById;
-    }
-
-    public void setCreditsById(Collection<Credit> creditsById) {
-        this.creditsById = creditsById;
+    // toString()
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

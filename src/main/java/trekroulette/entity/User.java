@@ -1,19 +1,19 @@
 package trekroulette.entity;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "User")
 @Table(name = "user")
 public class User {
+    // Instance variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    @Column(name = "id")
     private int id;
     @Column(name = "first_name")
     private String firstName;
@@ -35,11 +35,14 @@ public class User {
     private LocalDate deactivated;
     @Column(name = "active", insertable = false)
     private int active;
-    @OneToMany(mappedBy = "userByUserId", cascade = CascadeType.ALL)
-    private Set<Own> ownsById;
-    @OneToMany(mappedBy = "userByUserId", cascade = CascadeType.ALL)
-    private Set<View> viewsById;
 
+    // 1-* associations
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Own> owns = new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<View> views = new HashSet<>();
+
+    // Constructors
     public User() {
     }
 
@@ -52,6 +55,7 @@ public class User {
         this.privileges = privileges;
     }
 
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -140,34 +144,72 @@ public class User {
         this.active = active;
     }
 
+    public Set<Own> getOwns() {
+        return owns;
+    }
+
+    public void setOwns(Set<Own> owns) {
+        this.owns = owns;
+    }
+
+    public Set<View> getViews() {
+        return views;
+    }
+
+    public void setViews(Set<View> views) {
+        this.views = views;
+    }
+
+    // Entity Set<> managers
+    public void addOwn(Own own) {
+        owns.add(own);
+        own.setUser(this);
+    }
+
+    public void removeOwn(Own own) {
+        owns.remove(own);
+        own.setUser(null);
+    }
+
+    public void addView(View view) {
+        views.add(view);
+        view.setUser(this);
+    }
+
+    public void removeView(View view) {
+        views.remove(view);
+        view.setUser(null);
+    }
+
+    // equals() and hashCode() methods
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && active == user.active && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(userName, user.userName) && Objects.equals(password, user.password) && Objects.equals(privileges, user.privileges) && Objects.equals(created, user.created) && Objects.equals(lastLogin, user.lastLogin) && Objects.equals(deactivated, user.deactivated);
+        return getId() == user.getId() && getActive() == user.getActive() && getFirstName().equals(user.getFirstName()) && getLastName().equals(user.getLastName()) && getEmail().equals(user.getEmail()) && getUserName().equals(user.getUserName()) && getPassword().equals(user.getPassword()) && getPrivileges().equals(user.getPrivileges()) && Objects.equals(getDeactivated(), user.getDeactivated());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, userName, password, privileges, created, lastLogin, deactivated, active);
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getUserName(), getPassword(), getPrivileges(), getDeactivated(), getActive());
     }
 
-    public Set<Own> getOwnsById() {
-        return ownsById;
+    // toString()
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", privileges='" + privileges + '\'' +
+                ", created=" + created +
+                ", lastLogin=" + lastLogin +
+                ", deactivated=" + deactivated +
+                ", active=" + active +
+                '}';
     }
-
-    public void setOwnsById(Set<Own> ownsById) {
-        this.ownsById = ownsById;
-    }
-
-    public Set<View> getViewsById() {
-        return viewsById;
-    }
-
-    public void setViewsById(Set<View> viewsById) {
-        this.viewsById = viewsById;
-    }
-
-    public void addOwn(Own own) {}
 }

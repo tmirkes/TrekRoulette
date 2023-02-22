@@ -1,22 +1,35 @@
 package trekroulette.entity;
 
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity(name = "Role")
 @Table(name = "role")
 public class Role {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // Instance variables
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int id;
-    @Basic
     @Column(name = "role_name")
     private String roleName;
-    @OneToMany(mappedBy = "roleByRoleId")
-    private Collection<Credit> creditsById;
 
+    // 1-* associations
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Credit> credits = new HashSet<>();
+
+    // Constructors
+    public Role() {
+    }
+
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
+
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -33,24 +46,46 @@ public class Role {
         this.roleName = roleName;
     }
 
+    public Set<Credit> getCredits() {
+        return credits;
+    }
+
+    public void setCredits(Set<Credit> credits) {
+        this.credits = credits;
+    }
+
+    // Entity Set<> managers
+    public void addCredit(Credit credit) {
+        credits.add(credit);
+        credit.setRole(this);
+    }
+
+    public void removeCredit(Credit credit) {
+        credits.remove(credit);
+        credit.setRole(null);
+    }
+
+    // equals() and hashCode() methods
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return id == role.id && Objects.equals(roleName, role.roleName);
+        return getId() == role.getId() && getRoleName().equals(role.getRoleName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, roleName);
+        return Objects.hash(getId(), getRoleName());
     }
 
-    public Collection<Credit> getCreditsById() {
-        return creditsById;
-    }
-
-    public void setCreditsById(Collection<Credit> creditsById) {
-        this.creditsById = creditsById;
+    // toString()
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                '}';
     }
 }

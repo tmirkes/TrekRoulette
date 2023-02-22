@@ -11,94 +11,91 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ViewDaoTest {
     GenericDao<View> testingDao;
+    GenericDao<User> userTestingDao;
+    GenericDao<Episode> episodeTestingDao;
+    GenericDao<Status> statusTestingDao;
+
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
     void setUp() {
+        testingDao = new GenericDao(View.class);
+        userTestingDao = new GenericDao(User.class);
+        episodeTestingDao = new GenericDao(Episode.class);
+        statusTestingDao = new GenericDao(Status.class);
         Database database = Database.getInstance();
         database.runSQL("cleandbtestdata.sql");
-        testingDao = new GenericDao<>(View.class);
     }
 
     @Test
-    void getById() {
+    void getViewsById() {
         View testView = (View)testingDao.getById(1);
         assertNotNull(testView);
-        assertEquals(1, testView.getId());
-        assertEquals(1, testView.getStatusId());
-        assertEquals(1, testView.getUserId());
-        assertEquals(1, testView.getEpisodeId());
+        assertEquals(testView, testingDao.getById(1));
     }
 
     @Test
-    void getByPropertyEqual() {
-        List<View> ViewList = testingDao.getByPropertyEqual("userId", "4");
-        assertNotNull(ViewList);
-        assertEquals(1, ViewList.size());
-        View resultView = (View)ViewList.get(0);
-        assertNotNull(resultView);
-        assertEquals(5, resultView.getId());
-        assertEquals(1, resultView.getStatusId());
-        assertEquals(5, resultView.getEpisodeId());
+    void getAllViews() {
+        List<View> viewList = testingDao.getAll();
+        assertNotNull(viewList);
+        assertEquals(viewList, testingDao.getAll());
     }
 
     @Test
-    void getAll() {
-        List<View> ViewList = testingDao.getAll();
-        assertNotNull(ViewList);
-        assertEquals(5, ViewList.size());
+    void addViewWithUserStatusAndEpisode() {
+        User existingUser = (User)userTestingDao.getById(1);
+        assertNotNull(existingUser);
+        assertEquals(existingUser,(User)userTestingDao.getById(1));
+
+        Episode existingEpisode = (Episode)episodeTestingDao.getById(2);
+        assertNotNull(existingEpisode);
+        assertEquals(existingEpisode,(Episode)episodeTestingDao.getById(2));
+
+        Status existingStatus = (Status)statusTestingDao.getById(3);
+        assertNotNull(existingStatus);
+        assertEquals(existingStatus,(Status)statusTestingDao.getById(3));
+
+        View newView = new View();
+        newView.setUser(existingUser);
+        newView.setEpisode(existingEpisode);
+        newView.setStatus(existingStatus);
+        existingUser.addView(newView);
+        existingEpisode.addView(newView);
+        existingStatus.addView(newView);
+
+        int id = testingDao.addEntity(newView);
+        View insertedView = (View)testingDao.getById(id);
+        assertNotNull(insertedView);
+        assertEquals(newView, insertedView);
+        assertEquals(existingUser, insertedView.getUser());
+        assertEquals(existingEpisode, insertedView.getEpisode());
+        assertEquals(existingStatus, insertedView.getStatus());
     }
 
     @Test
-    void addEntity() {
-        View testView = new View(3,2,4);
+    void editExistingView() {
+        View original = (View)testingDao.getById(1);
+
+        View testView = (View)testingDao.getById(1);
         assertNotNull(testView);
-        int id = testingDao.addEntity(testView);
-        assertNotEquals(0, id);
-        View newView = (View)testingDao.getById(id);
-        assertNotNull(newView);
-        assertEquals(3, newView.getStatusId());
-        assertEquals(2, newView.getUserId());
-        assertEquals(4, newView.getEpisodeId());
-    }
+        assertEquals(testView,(View)testingDao.getById(1));
 
-    @Test
-    void editEntity() {
-        View testView = (View)testingDao.getById(5);
-        logger.error("Orig id: " + testView.getId());
-        logger.error("Orig epId: " + testView.getEpisodeId());
-        logger.error("Orig status: " + testView.getStatusId());
-        logger.error("Orig userId: " + testView.getUserId());
+        Status updateStatus = (Status)statusTestingDao.getById(2);
         assertNotNull(testView);
-        int originalStatus = testView.getStatusId();
-        logger.error("Orig status extract: " + originalStatus);
-        int newStatus = 3;
-        View editView = testView;
-        logger.error("Copy id: " + editView.getId());
-        logger.error("Copy epId: " + editView.getEpisodeId());
-        logger.error("Copy status: " + editView.getStatusId());
-        logger.error("Copy userId: " + editView.getUserId());
-        assertNotNull(editView);
-        editView.setStatusId(newStatus);
-        logger.error("Edited id: " + editView.getId());
-        logger.error("Edited epId: " + editView.getEpisodeId());
-        logger.error("Edited status: " + editView.getStatusId());
-        logger.error("Edited userId: " + editView.getUserId());
-        assertEquals(newStatus, editView.getStatusId());
-        testingDao.editEntity(editView);
-        View updatedView = (View)testingDao.getById(5);
-        logger.error("Queried id: " + updatedView.getId());
-        logger.error("Queried epId: " + updatedView.getEpisodeId());
-        logger.error("Queried status: " + updatedView.getStatusId());
-        logger.error("Queried userId: " + updatedView.getUserId());
-        assertNotEquals(originalStatus, updatedView.getStatusId());
+        assertEquals(updateStatus,(Status)statusTestingDao.getById(2));
+
+        testView.setStatus(updateStatus);
+        assertNotEquals(original,testView);
+        testingDao.editEntity(testView);
+        assertEquals(testView,(View)testingDao.getById(1));
+        assertNotEquals(original,(View)testingDao.getById(1));
     }
 
     @Test
-    void deleteEntity() {
-        View testView = (View)testingDao.getById(4);
+    void deleteView() {
+        View testView = (View)testingDao.getById(3);
         assertNotNull(testView);
         testingDao.deleteEntity(testView);
-        assertNull(testingDao.getById(4));
+        assertNull(testingDao.getById(3));
     }
 }

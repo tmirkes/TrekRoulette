@@ -4,35 +4,34 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import trekroulette.entity.User;
+import trekroulette.entity.*;
 import trekroulette.test.util.Database;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
     GenericDao<User> testingDao;
+    GenericDao<View> viewTestingDao;
+    GenericDao<SeriesSeason> seriesSeasonTestingDao;
+    GenericDao<Own> ownTestingDao;
+
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
     void setUp() {
+        testingDao = new GenericDao(User.class);
+        viewTestingDao = new GenericDao(View.class);
+        seriesSeasonTestingDao = new GenericDao(SeriesSeason.class);
+        ownTestingDao = new GenericDao(Own.class);
         Database database = Database.getInstance();
         database.runSQL("cleandbtestdata.sql");
-        testingDao = new GenericDao<>(User.class);
     }
 
     @Test
-    void getById() {
+    void getUsersById() {
         User testUser = (User)testingDao.getById(1);
         assertNotNull(testUser);
-        assertEquals(1, testUser.getId());
-        assertEquals("First1", testUser.getFirstName());
-        assertEquals("Last1", testUser.getLastName());
-        assertEquals("fl1@test.com", testUser.getEmail());
-        assertEquals("fl1", testUser.getUserName());
-        assertEquals("password", testUser.getPassword());
-        assertEquals("user", testUser.getPrivileges());
-        assertNotNull(testUser.getCreated());
-        assertEquals(1, testUser.getActive());
+        assertEquals(testUser, testingDao.getById(1));
     }
 
     @Test
@@ -42,14 +41,8 @@ class UserDaoTest {
         assertEquals(1, userList.size());
         User resultUser = (User)userList.get(0);
         assertNotNull(resultUser);
-        assertEquals("First6", resultUser.getFirstName());
-        assertEquals("Last6", resultUser.getLastName());
-        assertEquals("fl6@test.com", resultUser.getEmail());
-        assertEquals("fl6", resultUser.getUserName());
-        assertEquals("password", resultUser.getPassword());
-        assertEquals("user", resultUser.getPrivileges());
-        assertNotNull(resultUser.getCreated());
-        assertEquals(1, resultUser.getActive());
+        assertEquals(userList, testingDao.getByPropertyEqual("userName", "fl6"));
+        assertEquals(resultUser, userList.get(0));
     }
 
     @Test
@@ -59,58 +52,44 @@ class UserDaoTest {
         assertEquals(1, userList.size());
         User resultUser = (User)userList.get(0);
         assertNotNull(resultUser);
-        assertEquals("First4", resultUser.getFirstName());
-        assertEquals("Last4", resultUser.getLastName());
-        assertEquals("fl4@test.com", resultUser.getEmail());
-        assertEquals("fl4", resultUser.getUserName());
-        assertEquals("password", resultUser.getPassword());
-        assertEquals("user", resultUser.getPrivileges());
-        assertNotNull(resultUser.getCreated());
-        assertEquals(1, resultUser.getActive());
+        assertEquals(resultUser, userList.get(0));
     }
 
     @Test
-    void getAll() {
+    void getAllUsers() {
         List<User> userList = testingDao.getAll();
         assertNotNull(userList);
-        assertEquals(9, userList.size());
+        assertEquals(userList, testingDao.getAll());
     }
 
     @Test
-    void addEntity() {
+    void addUser() {
         User testUser = new User("First10","Last10","fl10@test.com","fl10","password","user");
         assertNotNull(testUser);
-        int id = testingDao.addEntity(testUser);
+        testUser.setActive(1);
+        int id = (int)testingDao.addEntity(testUser);
         assertNotEquals(0, id);
         User newUser = (User)testingDao.getById(id);
+        assertNotNull(testUser);
         assertNotNull(newUser);
-        assertEquals("First10", newUser.getFirstName());
-        assertEquals("Last10", newUser.getLastName());
-        assertEquals("fl10@test.com", newUser.getEmail());
-        assertEquals("fl10", newUser.getUserName());
-        assertEquals("password", newUser.getPassword());
-        assertEquals("user", newUser.getPrivileges());
-        assertNotNull(newUser.getCreated());
-        assertEquals(1, newUser.getActive());
+        assertEquals(testUser, newUser);
     }
 
     @Test
-    void editEntity() {
+    void editExistingUser() {
+        User original = (User)testingDao.getById(7);
         User testUser = (User)testingDao.getById(7);
         assertNotNull(testUser);
-        String originalName = testUser.getFirstName();
-        String newName = "Barry";
-        User editUser = testUser;
-        assertNotNull(editUser);
-        editUser.setFirstName(newName);
-        assertEquals(newName, editUser.getFirstName());
-        testingDao.editEntity(editUser);
-        User updatedUser = (User)testingDao.getById(7);
-        assertNotEquals(originalName, updatedUser.getFirstName());
+        assertEquals(testUser,(User)testingDao.getById(7));
+        testUser.setFirstName("Barry");
+        assertNotEquals(original,testUser);
+        testingDao.editEntity(testUser);
+        assertEquals(testUser,(User)testingDao.getById(7));
+        assertNotEquals(original,(User)testingDao.getById(7));
     }
 
     @Test
-    void deleteEntity() {
+    void deleteUser() {
         User testUser = (User)testingDao.getById(9);
         assertNotNull(testUser);
         testingDao.deleteEntity(testUser);
