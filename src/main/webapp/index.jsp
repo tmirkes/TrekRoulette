@@ -6,26 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <style>
-        body,h1,h5 {font-family: "Raleway", sans-serif}
-        body, html {height: 100%}
-        .bgimg {
-            background-image: url('/w3images/onepage_restaurant.jpg');
-            min-height: 100%;
-            background-position: center;
-            background-size: cover;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/stars.css">
 </head>
 <body>
-
-<div class="bgimg w3-display-container w3-text-white">
-    <div class="w3-display-middle w3-jumbo">
-        <p>logo</p>
+<div class="bg">
+    <div class="z-3">
+        <div class="tile top-left animate-opacity freq-5"></div>
+        <div class="tile top-right animate-opacity freq-9"></div>
+        <div class="tile bottom-left animate-opacity freq-7"></div>
+        <div class="tile bottom-right animate-opacity freq-10"></div>
     </div>
+    <div class="z-2">
+        <div class="tile top-left animate-opacity freq-9 delay-2"></div>
+        <div class="tile top-right animate-opacity freq-5 delay-2"></div>
+        <div class="tile bottom-left animate-opacity freq-6 delay-4"></div>
+        <div class="tile bottom-right animate-opacity freq-10 delay-4"></div>
+    </div>
+    <div class="z-1">
+        <div class="tile top-left animate-opacity freq-7 delay-2"></div>
+        <div class="tile top-right animate-opacity freq-5 delay-4"></div>
+        <div class="tile bottom-left animate-opacity freq-9 delay-2"></div>
+        <div class="tile bottom-right animate-opacity freq-5 delay"></div>
+    </div>
+</div>
+<div class="w3-display-container w3-text-white">
     <div class="w3-display-topleft w3-container w3-xlarge">
-        <p><button onclick="document.getElementById('menu').style.display='block'" class="w3-button w3-black">Spin it!</button></p>
-        <p><button onclick="document.getElementById('contact').style.display='block'" class="w3-button w3-black">About</button></p>
+        <p><button onclick="document.getElementById('access').style.display='block'" class="w3-button w3-black">Authenticate</button></p>
+        <p><button onclick="document.getElementById('spin').style.display='block'" class="w3-button w3-black">Give it a spin</button></p>
+        <p><button onclick="document.getElementById('about').style.display='block'" class="w3-button w3-black">About Trek Roulette</button></p>
     </div>
     <div class="w3-display-bottomleft w3-container">
         <p class="w3-xlarge">Want to watch some Star Trek, but don't want to choose?</p>
@@ -33,12 +41,11 @@
         <p>powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
     </div>
 </div>
-
-<!-- Menu Modal -->
-<div id="menu" class="w3-modal">
+<!-- Access Modal -->
+<div id="access" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom">
         <div class="w3-container w3-black w3-display-container">
-            <span onclick="document.getElementById('menu').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+            <span onclick="document.getElementById('access').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
             <h1>Starters</h1>
         </div>
         <div class="w3-container">
@@ -68,11 +75,45 @@
     </div>
 </div>
 
-<!-- Contact Modal -->
-<div id="contact" class="w3-modal">
+<!-- Spin Modal -->
+<div id="spin" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+        <div class="w3-container w3-black w3-display-container">
+            <span onclick="document.getElementById('spin').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+            <h1>Starters</h1>
+        </div>
+        <div class="w3-container">
+            <h5>Tomato Soup <b>$2.50</b></h5>
+            <h5>Chicken Salad <b>$3.50</b></h5>
+            <h5>Bread and Butter <b>$1.00</b></h5>
+        </div>
+        <div class="w3-container w3-black">
+            <h1>Main Courses</h1>
+        </div>
+        <div class="w3-container">
+            <h5>Grilled Fish and Potatoes <b>$8.50</b></h5>
+            <h5>Italian Pizza <b>$5.50</b></h5>
+            <h5>Veggie Pasta <b>$4.00</b></h5>
+            <h5>Chicken and Potatoes <b>$6.50</b></h5>
+            <h5>Deluxe Burger <b>$5.00</b></h5>
+        </div>
+        <div class="w3-container w3-black">
+            <h1>Desserts</h1>
+        </div>
+        <div class="w3-container">
+            <h5>Fruit Salad <b>$2.50</b></h5>
+            <h5>Ice cream <b>$2.00</b></h5>
+            <h5>Chocolate Cake <b>$4.00</b></h5>
+            <h5>Cheese <b>$5.50</b></h5>
+        </div>
+    </div>
+</div>
+
+<!-- About Modal -->
+<div id="about" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom">
         <div class="w3-container w3-black">
-            <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+            <span onclick="document.getElementById('about').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
             <h1>Contact</h1>
         </div>
         <div class="w3-container">
@@ -89,5 +130,6 @@
 </div>
 
 </body>
+<script src="js/stars.js"></script>
 </html>
 
