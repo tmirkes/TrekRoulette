@@ -19,14 +19,14 @@
 - [x] Link USER to EPISODE
 - [x] Link STATUS to EPISODE
 - [x] Link EPISODE to SERIES
-- [ ] Implement Hibernate in IntelliJ project
-- [ ] Build proof-of-concept DAO in IntelliJ
-- [ ] Weekly reflection
+- [x] Implement Hibernate in IntelliJ project
+- [x] Build proof-of-concept DAO in IntelliJ
+- [x] Weekly reflection
 
 ### Week 5
-- [ ] Determine possible Web Services or APIs to use
-- [ ] Document application flow (Figma)
-- [ ] Build index JSP
+- [x] Determine possible Web Services or APIs to use
+- [x] Document application flow (Figma)
+- [x] Build index JSP
 - [ ] Build user register JSP
 - [ ] Build login JSP
 - [ ] Build profile edit JSP

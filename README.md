@@ -25,6 +25,7 @@ Trek Roulette intends to make that random selection process less stressful, requ
   * REST API (to support STAPI access)
 * **CSS**
   * W3.CSS template
+  * [Matt Seiki CSS animated starfield](https://github.com/SeikiMatt/starry-sky)
 * **Data Validation**
   * Bootstrap Validator
   * Hibernate validation (is this a thing? how does it work?)
