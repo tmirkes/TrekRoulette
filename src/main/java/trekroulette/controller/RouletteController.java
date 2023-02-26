@@ -14,7 +14,7 @@ public class RouletteController {
     }
 
     public void getMaximumEpisodeId(List<Episode> library) {
-        maximumEpisodeId = library.size();
+        maximumEpisodeId = (int) library.size();
     }
 
     public void getRandomEpisodeId() {

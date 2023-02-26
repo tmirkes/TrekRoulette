@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +14,9 @@
 </head>
 <body>
 <div class="container">
+    <c:if test="${preload}">
+        <jsp:forward page="/generate"></jsp:forward>
+    </c:if>
     <article class="row" id="navigationControl">
         <div class="col-2"></div>
         <div class="col text-align-center">

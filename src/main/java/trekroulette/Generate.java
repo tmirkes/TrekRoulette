@@ -17,6 +17,7 @@ public class Generate extends HttpServlet {
         Episode recommendedEpisode = episodeLibrary.get(controller.getRecommendation(episodeLibrary));
         HttpSession session = request.getSession();
         session.setAttribute("recommendedEpisode", recommendedEpisode);
+        session.setAttribute("preload", false);
         String url = "/index.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
