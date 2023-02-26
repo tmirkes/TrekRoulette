@@ -5,8 +5,8 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="connection.url">jdbc:mysql://awseb-e-9dhiixarre-stack-awsebrdsdatabase-hfxxsmw9hb4p.cyvpxebr0x35.us-east-1.rds.amazonaws.com :3306/app</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">student</property>
+        <property name="connection.username">funkyMarshmallow</property>
+        <property name="connection.password">jO(LgoHL9I98O9lI:O(:)_I{:LKJUIO</property>
         <property name="hibernate.c3p0.min_size">5</property>
         <property name="hibernate.c3p0.max_size">20</property>
         <property name="hibernate.c3p0.timeout">300</property>
