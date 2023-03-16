@@ -1,12 +1,9 @@
-package co.stapi.season;
+package co.stapi.occupation;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Season{
-
-	@JsonProperty("seasons")
-	private List<SeasonsItem> seasons;
+public class Occupation{
 
 	@JsonProperty("page")
 	private Page page;
@@ -14,13 +11,8 @@ public class Season{
 	@JsonProperty("sort")
 	private Sort sort;
 
-	public void setSeasons(List<SeasonsItem> seasons){
-		this.seasons = seasons;
-	}
-
-	public List<SeasonsItem> getSeasons(){
-		return seasons;
-	}
+	@JsonProperty("occupations")
+	private List<OccupationsItem> occupations;
 
 	public void setPage(Page page){
 		this.page = page;
@@ -38,13 +30,21 @@ public class Season{
 		return sort;
 	}
 
+	public void setOccupations(List<OccupationsItem> occupations){
+		this.occupations = occupations;
+	}
+
+	public List<OccupationsItem> getOccupations(){
+		return occupations;
+	}
+
 	@Override
  	public String toString(){
 		return 
-			"Season{" + 
-			"seasons = '" + seasons + '\'' + 
-			",page = '" + page + '\'' + 
+			"Occupation{" + 
+			"page = '" + page + '\'' + 
 			",sort = '" + sort + '\'' + 
+			",occupations = '" + occupations + '\'' + 
 			"}";
 		}
 }

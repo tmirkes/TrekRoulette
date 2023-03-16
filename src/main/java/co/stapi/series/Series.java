@@ -1,12 +1,14 @@
-package co.stapi.season;
+package co.stapi.series;
 
-import java.util.List;
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Season{
+public class Series{
 
-	@JsonProperty("seasons")
-	private List<SeasonsItem> seasons;
+	@JsonProperty("series")
+	private ArrayList<SeriesItem> series;
 
 	@JsonProperty("page")
 	private Page page;
@@ -14,12 +16,15 @@ public class Season{
 	@JsonProperty("sort")
 	private Sort sort;
 
-	public void setSeasons(List<SeasonsItem> seasons){
-		this.seasons = seasons;
+	@JsonCreator
+	public Series() {}
+
+	public void setSeries(ArrayList<SeriesItem> series){
+		this.series = series;
 	}
 
-	public List<SeasonsItem> getSeasons(){
-		return seasons;
+	public ArrayList<SeriesItem> getSeries(){
+		return series;
 	}
 
 	public void setPage(Page page){
@@ -41,8 +46,8 @@ public class Season{
 	@Override
  	public String toString(){
 		return 
-			"Season{" + 
-			"seasons = '" + seasons + '\'' + 
+			"Series{" + 
+			"series = '" + series + '\'' + 
 			",page = '" + page + '\'' + 
 			",sort = '" + sort + '\'' + 
 			"}";

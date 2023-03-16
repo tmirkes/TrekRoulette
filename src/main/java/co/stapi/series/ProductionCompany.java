@@ -10,6 +10,14 @@ public class ProductionCompany{
 	@JsonProperty("name")
 	private String name;
 
+	public ProductionCompany() {
+	}
+
+	public ProductionCompany(String uid, String name) {
+		this.uid = uid;
+		this.name = name;
+	}
+
 	public void setUid(String uid){
 		this.uid = uid;
 	}

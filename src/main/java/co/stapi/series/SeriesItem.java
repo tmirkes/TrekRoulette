@@ -40,6 +40,23 @@ public class SeriesItem{
 	@JsonProperty("abbreviation")
 	private String abbreviation;
 
+	public SeriesItem() {}
+
+	public SeriesItem(String uid, Object productionEndYear, int seasonsCount, int featureLengthEpisodesCount, String originalRunStartDate, OriginalBroadcaster originalBroadcaster, int episodesCount, ProductionCompany productionCompany, int productionStartYear, String originalRunEndDate, String title, String abbreviation) {
+		this.uid = uid;
+		this.productionEndYear = productionEndYear;
+		this.seasonsCount = seasonsCount;
+		this.featureLengthEpisodesCount = featureLengthEpisodesCount;
+		this.originalRunStartDate = originalRunStartDate;
+		this.originalBroadcaster = originalBroadcaster;
+		this.episodesCount = episodesCount;
+		this.productionCompany = productionCompany;
+		this.productionStartYear = productionStartYear;
+		this.originalRunEndDate = originalRunEndDate;
+		this.title = title;
+		this.abbreviation = abbreviation;
+	}
+
 	public void setUid(String uid){
 		this.uid = uid;
 	}

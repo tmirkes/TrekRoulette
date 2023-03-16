@@ -10,6 +10,14 @@ public class OriginalBroadcaster{
 	@JsonProperty("name")
 	private String name;
 
+	public OriginalBroadcaster() {
+	}
+
+	public OriginalBroadcaster(String uid, String name) {
+		this.uid = uid;
+		this.name = name;
+	}
+
 	public void setUid(String uid){
 		this.uid = uid;
 	}
