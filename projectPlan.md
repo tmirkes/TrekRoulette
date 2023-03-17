@@ -27,12 +27,6 @@
 - [x] Determine possible Web Services or APIs to use
 - [x] Document application flow (Figma)
 - [x] Build index JSP
-- [ ] Build user register JSP
-- [ ] Build login JSP
-- [ ] Build profile edit JSP
-- [ ] Build generator output JSP
-- [ ] Build add series JSP
-- [ ] Build add episode JSP
 - [ ] Weekly reflection
 
 ### Week 6
