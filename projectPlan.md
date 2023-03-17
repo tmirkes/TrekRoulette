@@ -27,54 +27,42 @@
 - [x] Determine possible Web Services or APIs to use
 - [x] Document application flow (Figma)
 - [x] Build index JSP
-- [ ] Weekly reflection
+- [x] Weekly reflection
 
 ### Week 6
-- [ ] Build User POJO
-- [ ] Build User DAO class
-- [ ] Create User DAO tests
-- [ ] Pass User DAO testing
-- [ ] Build Episode POJO
-- [ ] Build Episode DAO class
-- [ ] Create Episode DAO tests
-- [ ] Pass Episode DAO testing
-- [ ] Build Series POJO
-- [ ] Build Series DAO class
-- [ ] Create Series DAO tests
-- [ ] Pass Series DAO testing
-- [ ] Build Status DAO class
-- [ ] Create Status DAO tests
-- [ ] Pass User DAO testing
-- [ ] Weekly reflection
+- [x] Build POJO objects for database interaction
+- [x] Build generic DAO class
+- [x] Construct testing classes for all POJOs
+- [x] Develop and pass CRUD testing for generic DAO on all POJO classes
+- [x] Weekly reflection
 
 ### Week 7
-- [ ] Set up AWS hosting
-- [ ] Deploy skeleton to AWS
+- [x] Set up AWS hosting
+- [x] Deploy skeleton to AWS
 - [ ] Implement authentication to access DAO classes
-- [ ] Identify CSS template for final layout
-- [ ] Implement chosen CSS template on index page
-- [ ] Weekly reflection
+- [x] Identify CSS template for final layout
+- [x] Implement chosen CSS template on index page
+- [x] Weekly reflection
 
 ### Week 8
-- [ ] Create authentication tests
-- [ ] Pass authentication tests
-- [ ] Create user login testing
-- [ ] Pass user login functionality testing
-- [ ] Create user registration testing
-- [ ] Pass user registration functionality testing
-- [ ] Create view logging testing 
-- [ ] Pass view logging functionality testing
-- [ ] Identify remaining elements of MVP
-- [ ] Weekly reflection
+- [x] Establish Cognito account
+- [x] Establish authentication settings
+- [x] Implement STAPI access into project
+- [x] Develop connection and response tests
+- [ ] Pass all tests on API calls
+- [ ] Implement STAPI mapping to local objects
+- [ ] Develop data verification tests
+- [ ] Pass all tests on data mapping
+- [x] Weekly reflection
 
 ### Week 9
-- [ ] Complete outstanding MVP elements
-- [ ] Create episode detail modal code
-- [ ] Incorporate modal code into site display
-- [ ] Develop "in progress" status change query code
-- [ ] Develop "watched" status change query code
-- [ ] Develop "reset viewing" status change query code
-- [ ] Develop "reset all" status change query code in profile page
+- [ ] Verify STAPI update and test response data
+- [ ] Pass all tests on API calls
+- [ ] Revise POJOs to align with STAPI response objects
+- [ ] Implement STAPI mapping to local objects
+- [ ] Develop data verification tests
+- [ ] Pass all tests on data mapping
+- [ ] Implement passage of POJOs to JSP front end
 - [ ] Weekly reflection
 
 ### Week 10

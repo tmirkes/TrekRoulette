@@ -13,7 +13,7 @@ Trek Roulette intends to make that random selection process less stressful, requ
 ### Project Technologies/Techniques
 
 * **Security/Authentication**
-  * TBD
+  * Amazon Cognito
 * **Database**
   * MySQL 8.0.22
 * **ORM Framework**
@@ -22,17 +22,16 @@ Trek Roulette intends to make that random selection process less stressful, requ
   * Maven
 * **Web Services consumed using Java**
   * [Star Trek API (STAPI)](https://mvnrepository.com/artifact/com.cezarykluczynski.stapi/stapi-client)
-  * REST API (to support STAPI access)
+  * RESTful structures for accessing STAPI
 * **CSS**
   * W3.CSS template
   * [Matt Seiki CSS animated starfield](https://github.com/SeikiMatt/starry-sky)
 * **Data Validation**
-  * Bootstrap Validator
-  * Hibernate validation (is this a thing? how does it work?)
+  * TBD
 * **Logging**
   * Log4J2
 * **Hosting**
-  * AWS
+  * Amazon Web Services
 * **Independent Research Topic/s**
   * Mocking exception tests
   * APIs/plugins to achieve mocking
