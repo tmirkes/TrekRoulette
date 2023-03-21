@@ -2,13 +2,16 @@ package co.stapi.episode;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Series{
+public class Writers{
 
 	@JsonProperty("description")
 	private String description;
 
-	@JsonProperty("$ref")
-	private String ref;
+	@JsonProperty("type")
+	private String type;
+
+	@JsonProperty("items")
+	private Items items;
 
 	public void setDescription(String description){
 		this.description = description;
@@ -18,20 +21,29 @@ public class Series{
 		return description;
 	}
 
-	public void setRef(String ref){
-		this.ref = ref;
+	public void setType(String type){
+		this.type = type;
 	}
 
-	public String getRef(){
-		return ref;
+	public String getType(){
+		return type;
+	}
+
+	public void setItems(Items items){
+		this.items = items;
+	}
+
+	public Items getItems(){
+		return items;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"Series{" + 
+			"Writers{" + 
 			"description = '" + description + '\'' + 
-			",$ref = '" + ref + '\'' + 
+			",type = '" + type + '\'' + 
+			",items = '" + items + '\'' + 
 			"}";
 		}
 }

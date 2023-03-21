@@ -1,16 +1,20 @@
 package co.stapi;
 
+import co.stapi.episode.EpisodeData;
 import com.cezarykluczynski.stapi.client.api.StapiRestClient;
 import com.cezarykluczynski.stapi.client.api.dto.EpisodeSearchCriteria;
 import com.cezarykluczynski.stapi.client.api.rest.Episode;
-import com.cezarykluczynski.stapi.client.v1.rest.model.EpisodeBase;
-import com.cezarykluczynski.stapi.client.v1.rest.model.EpisodeBaseResponse;
-import com.cezarykluczynski.stapi.client.v1.rest.model.EpisodeFullResponse;
-import com.cezarykluczynski.stapi.client.v1.rest.model.ResponsePage;
+import com.cezarykluczynski.stapi.client.v1.rest.model.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -192,13 +196,13 @@ public class ClientTest {
         logger.info("ResponsePage data:\n");
         logger.info(page);
         assertEquals(0, page.getPageNumber());
-        assertEquals(852, page.getTotalElements());
+        assertEquals(855, page.getTotalElements());
         assertEquals(18, page.getTotalPages());
         assertTrue(page.getFirstPage());
         assertFalse(page.getLastPage());
         logger.info(page2);
         assertEquals(1, page2.getPageNumber());
-        assertEquals(852, page2.getTotalElements());
+        assertEquals(855, page2.getTotalElements());
         assertEquals(18, page2.getTotalPages());
         assertFalse(page2.getFirstPage());
         assertFalse(page2.getLastPage());
@@ -248,6 +252,79 @@ public class ClientTest {
         EpisodeFullResponse episodeFullResponse = episode.get(queryUid);
         logger.info("episodeFullResponse data returned.");
         // Output selected search details for debugging
+        //logger.info("EpisodeFullResponse: " + episodeFullResponse.getEpisode().toString());
+        logger.info(episodeFullResponse.getEpisode());
+    }
+
+    @Test
+    void extractSingleEpisodeFullObjectFromResponse() throws Exception {
+        // Get episode list
+        Episode episode = stapiRestClient.getEpisode();
+        logger.info("Episode instantiated.");
+        assertTrue(episode != null);
+        // Get search criteria, default page 0 (1)
+        EpisodeSearchCriteria episodeSearchCriteria = new EpisodeSearchCriteria();
+        // Set search criteria for lowest season number to 1
+        episodeSearchCriteria.setSeasonNumberFrom(1);
+        assertEquals(1, episodeSearchCriteria.getSeasonNumberFrom());
+        // Set search criteria for highest season number to 1
+        episodeSearchCriteria.setSeasonNumberTo(1);
+        assertEquals(1, episodeSearchCriteria.getSeasonNumberTo());
+        // Set search criteria for lowest episode number to 1
+        episodeSearchCriteria.setEpisodeNumberFrom(1);
+        assertEquals(1, episodeSearchCriteria.getEpisodeNumberFrom());
+        // Set search criteria for highest episode number to 1
+        episodeSearchCriteria.setEpisodeNumberTo(1);
+        assertEquals(1, episodeSearchCriteria.getEpisodeNumberTo());
+        logger.info("episodeSeachCriteria set.");
+        // Output search criteria settings for debugging
+        logger.info("page " + episodeSearchCriteria.getPageNumber() + ", seasons " + episodeSearchCriteria.getSeasonNumberFrom() + "-" + episodeSearchCriteria.getSeasonNumberTo() + ", episodes " + episodeSearchCriteria.getSeasonNumberFrom() + "-" + episodeSearchCriteria.getSeasonNumberTo());
+        // Search the episode list for all results marked as page 0 (1), season 1 and episode 1
+        EpisodeBaseResponse episodeBaseResponse = episode.search(episodeSearchCriteria);
+        logger.info("episodeBaseResponse data returned.");
+        // Output selected search details for debugging and populate search UID
+        int resultCount = 0;
+        String queryUid = null;
+        while (resultCount < episodeBaseResponse.getPage().getNumberOfElements()) {
+            int position = resultCount;
+            logger.info("EpisodeBaseResponse element " + resultCount + ": " + episodeBaseResponse.getEpisodes().get(resultCount).getTitle());
+            logger.info("Element title: " + episodeBaseResponse.getEpisodes().get(resultCount).getSeries().getTitle());
+            if (episodeBaseResponse.getEpisodes().get(resultCount).getSeries().getTitle().compareTo("Star Trek: Deep Space Nine") == 0) {
+                queryUid = (String) episodeBaseResponse.getEpisodes().get(position).getUid();
+            }
+            resultCount++;
+        }
+        logger.info(queryUid);
+        logger.info(queryUid.getClass().getName());
+        // Get the episode list for the episode with the UID matching the extracted value
+        EpisodeFullResponse episodeFullResponse = episode.get(queryUid);
+        logger.info("episodeFullResponse data returned.");
+        // Output selected search details for debugging
         logger.info("EpisodeFullResponse: " + episodeFullResponse.getEpisode().toString());
+        EpisodeFull episodeFull = episodeFullResponse.getEpisode();
+        logger.info("Episode result: " + episodeFull.toString());
+    }
+
+    @Test
+    public void swapiJSONResponseTesting() throws Exception {
+        Client client = ClientBuilder.newClient();
+        WebTarget target =
+                client.target("https://swapi.dev/api/people/19");
+        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+        assertEquals("{\"name\":\"Jek Tono Porkins\",\"height\":\"180\",\"mass\":\"110\",\"hair_color\":\"brown\",\"skin_color\":\"fair\",\"eye_color\":\"blue\",\"birth_year\":\"unknown\",\"gender\":\"male\",\"homeworld\":\"https://swapi.dev/api/planets/26/\",\"films\":[\"https://swapi.dev/api/films/1/\"],\"species\":[],\"vehicles\":[],\"starships\":[\"https://swapi.dev/api/starships/12/\"],\"created\":\"2014-12-12T11:16:56.569000Z\",\"edited\":\"2014-12-20T21:17:50.343000Z\",\"url\":\"https://swapi.dev/api/people/19/\"}", response);
+    }
+
+    @Test
+    public void swapiJSONResponseMappingTest() throws Exception {
+        Client client = ClientBuilder.newClient();
+        WebTarget target =
+                client.target("https://swapi.dev/api/people/19");
+        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+        assertEquals("{\"name\":\"Jek Tono Porkins\",\"height\":\"180\",\"mass\":\"110\",\"hair_color\":\"brown\",\"skin_color\":\"fair\",\"eye_color\":\"blue\",\"birth_year\":\"unknown\",\"gender\":\"male\",\"homeworld\":\"https://swapi.dev/api/planets/26/\",\"films\":[\"https://swapi.dev/api/films/1/\"],\"species\":[],\"vehicles\":[],\"starships\":[\"https://swapi.dev/api/starships/12/\"],\"created\":\"2014-12-12T11:16:56.569000Z\",\"edited\":\"2014-12-20T21:17:50.343000Z\",\"url\":\"https://swapi.dev/api/people/19/\"}", response);
+
+        ObjectMapper responseMapper = new ObjectMapper();
+        ResultsItem itsJustPorkins = responseMapper.readValue(response, ResultsItem.class);
+        String jeksFullName = "Jek Tono Porkins";
+        assertEquals(jeksFullName, itsJustPorkins.getName());
     }
 }
