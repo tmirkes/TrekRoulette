@@ -252,8 +252,13 @@ public class ClientTest {
         EpisodeFullResponse episodeFullResponse = episode.get(queryUid);
         logger.info("episodeFullResponse data returned.");
         // Output selected search details for debugging
-        //logger.info("EpisodeFullResponse: " + episodeFullResponse.getEpisode().toString());
         logger.info(episodeFullResponse.getEpisode());
+        assertEquals("EPMA0000267694", episodeFullResponse.getEpisode().getUid());
+        assertEquals("Emissary", episodeFullResponse.getEpisode().getTitle());
+        assertEquals("SEMA0000073238", episodeFullResponse.getEpisode().getSeries().getUid());
+        assertEquals("Star Trek: Deep Space Nine", episodeFullResponse.getEpisode().getSeries().getTitle());
+        assertEquals("SAMA0000001735", episodeFullResponse.getEpisode().getSeason().getUid());
+        assertEquals("DS9 Season 1", episodeFullResponse.getEpisode().getSeason().getTitle());
     }
 
     @Test
