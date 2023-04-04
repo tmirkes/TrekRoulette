@@ -27,6 +27,9 @@
   <jackson-version>2.10.0</jackson-version>
   <slf4j-version>2.0.6</slf4j-version>
   <mchange-version>0.2.19</mchange-version>
+  <com-auth-version>3.4.1</com-auth-version>
+  <org-json-version>20170516</org-json-version>
+  <commons-io-version>2.11.0</commons-io-version>
 </properties>
 <dependencies>
   <!-- Javax -->
@@ -129,6 +132,16 @@
     <artifactId>jersey-hk2</artifactId>
     <version>${jersey-version}</version>
   </dependency>
+  <dependency>
+    <groupId>org.glassfish.jersey.containers</groupId>
+    <artifactId>jersey-container-servlet</artifactId>
+    <version>${jersey-version}</version>
+  </dependency>
+  <dependency>
+    <groupId>org.glassfish.jersey.inject</groupId>
+    <artifactId>jersey-hk2</artifactId>
+    <version>${jersey-version}</version>
+  </dependency>
   <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
   <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
@@ -170,6 +183,23 @@
     <artifactId>mchange-commons-java</artifactId>
     <version>${mchange-version}</version>
   </dependency>
+  <!-- for parsing access token -->
+  <dependency>
+    <groupId>com.auth0</groupId>
+    <artifactId>java-jwt</artifactId>
+    <version>${com-auth-version}</version>
+  </dependency>
+  <dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>${org-json-version}</version>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+  <dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>${commons-io-version}</version>
+  </dependency>
 </dependencies>
 <build>
   <finalName>TrekRoulette</finalName>
@@ -190,6 +220,24 @@
             <version>${junit-platform-runner-version}</version>
           </dependency>
         </dependencies>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.2</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>src/main/.platform</directory>
+              <targetPath>.platform</targetPath>
+              <filtering>true</filtering>
+            </resource>
+            <resource>
+              <directory>src/main/.ebextensions</directory>
+              <targetPath>.ebextensions</targetPath>
+              <filtering>true</filtering>
+            </resource>
+          </webResources>
+        </configuration>
       </plugin>
     </plugins>
   </pluginManagement>

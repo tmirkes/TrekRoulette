@@ -1,151 +1,122 @@
 package trekroulette.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
-/**
- * View is a POJO entity used by Hibernate for operations relating to the associated database table.
- *
- * @author tlmirkes
- */
-@Entity(name = "View")
-@Table(name = "view")
+@Entity(name="View")
+@Table(name="view", schema="trekroulette")
 public class View {
-    // Instance variables
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @Column(name = "id", nullable = false)
     private int id;
-
-    // *-1 associations
-    @ManyToOne
-    @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
-    private Status status;
+    @Basic
+    @Column(name = "view_date", nullable = false)
+    private Timestamp viewDate;
+    @Basic
+    @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private int userId;
+    @Basic
+    @Column(name = "episode_id", nullable = false, insertable = false, updatable = false)
+    private int episodeId;
+    @Basic
+    @Column(name = "status_id", nullable = false, insertable = false, updatable = false)
+    private int statusId;
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User user;
+    private User userByUserId;
     @ManyToOne
     @JoinColumn(name = "episode_id", referencedColumnName = "id", nullable = false)
-    private Episode episode;
+    private Episode episodeByEpisodeId;
+    @ManyToOne
+    @JoinColumn(name = "status_id", referencedColumnName = "id", nullable = false)
+    private Status statusByStatusId;
 
-    // Constructors
-    /**
-     * No argument constructor
-     */
     public View() {
     }
 
-    // Getters and setters
-    /**
-     * id getter
-     *
-     * @return value of id
-     */
+    public View(Timestamp viewDate, int userId, int episodeId, int statusId) {
+        this.viewDate = viewDate;
+        this.userId = userId;
+        this.episodeId = episodeId;
+        this.statusId = statusId;
+    }
+
     public int getId() {
         return id;
     }
 
-    /**
-     * id setter
-     *
-     * @param id new value of id
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * status getter
-     *
-     * @return Status object
-     */
-    public Status getStatus() {
-        return status;
+    public Timestamp getViewDate() {
+        return viewDate;
     }
 
-    /**
-     * status setter
-     *
-     * @param status new Status object
-     */
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setViewDate(Timestamp viewDate) {
+        this.viewDate = viewDate;
     }
 
-    /**
-     * user getter
-     *
-     * @return User object
-     */
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    /**
-     * user setter
-     *
-     * @param user new User object
-     */
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    /**
-     * episode getter
-     *
-     * @return Episode object
-     */
-    public Episode getEpisode() {
-        return episode;
+    public int getEpisodeId() {
+        return episodeId;
     }
 
-    /**
-     * episode setter
-     *
-     * @param episode new Episode object
-     */
-    public void setEpisode(Episode episode) {
-        this.episode = episode;
+    public void setEpisodeId(int episodeId) {
+        this.episodeId = episodeId;
     }
 
-    // equals() and hashCode() methods
-    /**
-     * Override of equals method for use in object comparison
-     *
-     * @param o object to be compared
-     * @return comparison result boolean
-     */
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         View view = (View) o;
-        return getId() == view.getId() &&
-                getStatus().equals(view.getStatus()) &&
-                getUser().equals(view.getUser()) &&
-                getEpisode().equals(view.getEpisode());
-    }
-    /**
-     * Hash comparison method
-     *
-     * @return integer result of hash algorithm
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getStatus(), getUser(), getEpisode());
+        return id == view.id && userId == view.userId && episodeId == view.episodeId && statusId == view.statusId && Objects.equals(viewDate, view.viewDate);
     }
 
-    // toString()
-    /**
-     * Override of the toString method
-     *
-     * @return concatenated string of attribute values
-     */
     @Override
-    public String toString() {
-        return "View{" +
-                "id=" + id +
-                '}';
+    public int hashCode() {
+        return Objects.hash(id, viewDate, userId, episodeId, statusId);
+    }
+
+    public User getUserByUserId() {
+        return userByUserId;
+    }
+
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
+    }
+
+    public Episode getEpisodeByEpisodeId() {
+        return episodeByEpisodeId;
+    }
+
+    public void setEpisodeByEpisodeId(Episode episodeByEpisodeId) {
+        this.episodeByEpisodeId = episodeByEpisodeId;
+    }
+
+    public Status getStatusByStatusId() {
+        return statusByStatusId;
+    }
+
+    public void setStatusByStatusId(Status statusByStatusId) {
+        this.statusByStatusId = statusByStatusId;
     }
 }

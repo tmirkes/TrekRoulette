@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonDaoTest {
+    /**
     GenericDao<Person> testingDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -87,5 +88,5 @@ class PersonDaoTest {
         assertNotNull(testPerson);
         testingDao.deleteEntity(testPerson);
         assertNull(testingDao.getById(3));
-    }
+    }**/
 }

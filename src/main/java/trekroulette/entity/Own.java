@@ -1,124 +1,86 @@
 package trekroulette.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Objects;
 
-/**
- * Own is a POJO entity used by Hibernate for operations relating to the associated database table.
- *
- * @author tlmirkes
- */
-@Entity(name = "Own")
-@Table(name = "own")
+@Entity(name="Own")
+@Table(name="own", schema="trekroulette")
 public class Own {
-    // Instance variables
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @Column(name = "id", nullable = false)
     private int id;
-
-    // *-1 associations
+    @Basic
+    @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private int userId;
+    @Basic
+    @Column(name = "season_id", nullable = false, insertable = false, updatable = false)
+    private int seasonId;
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User user;
+    private User userByUserId;
     @ManyToOne
-    @JoinColumn(name = "series_season_id", referencedColumnName = "id", nullable = false)
-    private SeriesSeason seriesSeason;
+    @JoinColumn(name = "season_id", referencedColumnName = "id", nullable = false)
+    private Season seasonBySeasonId;
 
-    // Constructors
-    /**
-     * No argument constructor
-     */
     public Own() {
     }
 
-    // Getters and setters
-    /**
-     * id getter
-     *
-     * @return value of id
-     */
+    public Own(int userId, int seasonId) {
+        this.userId = userId;
+        this.seasonId = seasonId;
+    }
+
     public int getId() {
         return id;
     }
-    /**
-     * id setter
-     *
-     * @param id new value of id
-     */
+
     public void setId(int id) {
         this.id = id;
     }
-    /**
-     * user getter
-     *
-     * @return User object
-     */
-    public User getUser() {
-        return user;
-    }
-    /**
-     * user setter
-     *
-     * @param user new User object
-     */
-    public void setUser(User user) {
-        this.user = user;
-    }
-    /**
-     * seriesSeason getter
-     *
-     * @return SeriesSeason object
-     */
-    public SeriesSeason getSeriesSeason() {
-        return seriesSeason;
-    }
-    /**
-     * seriesSeason setter
-     *
-     * @param seriesSeason new SeriesSeason object
-     */
-    public void setSeriesSeason(SeriesSeason seriesSeason) {
-        this.seriesSeason = seriesSeason;
+
+    public int getUserId() {
+        return userId;
     }
 
-    // equals() and hashCode() methods
-    /**
-     * Override of equals method for use in object comparison
-     *
-     * @param o object to be compared
-     * @return comparison result boolean
-     */
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getSeasonId() {
+        return seasonId;
+    }
+
+    public void setSeasonId(int seasonId) {
+        this.seasonId = seasonId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Own own = (Own) o;
-        return getId() == own.getId() &&
-                getUser().equals(own.getUser()) &&
-                getSeriesSeason().equals(own.getSeriesSeason());
-    }
-    /**
-     * Hash comparison method
-     *
-     * @return integer result of hash algorithm
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getUser(), getSeriesSeason());
+        return id == own.id && userId == own.userId && seasonId == own.seasonId;
     }
 
-    // toString()
-    /**
-     * Override of the toString method
-     *
-     * @return concatenated string of attribute values
-     */
     @Override
-    public String toString() {
-        return "Own{" +
-                "id=" + id +
-                '}';
+    public int hashCode() {
+        return Objects.hash(id, userId, seasonId);
+    }
+
+    public User getUserByUserId() {
+        return userByUserId;
+    }
+
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
+    }
+
+    public Season getSeasonBySeasonId() {
+        return seasonBySeasonId;
+    }
+
+    public void setSeasonBySeasonId(Season seasonBySeasonId) {
+        this.seasonBySeasonId = seasonBySeasonId;
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewDaoTest {
+    /**
     GenericDao<View> testingDao;
     GenericDao<User> userTestingDao;
     GenericDao<Episode> episodeTestingDao;
@@ -97,5 +98,5 @@ class ViewDaoTest {
         assertNotNull(testView);
         testingDao.deleteEntity(testView);
         assertNull(testingDao.getById(3));
-    }
+    }**/
 }

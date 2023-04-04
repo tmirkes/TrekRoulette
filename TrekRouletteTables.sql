@@ -51,7 +51,7 @@ DROP TABLE synopsis;
 
 DROP TABLE user;
 
-DROP TABLE view;
+DROP TABLE view;user
 
 -- End of file.
 

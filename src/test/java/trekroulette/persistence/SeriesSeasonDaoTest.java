@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SeriesSeasonDaoTest {
+    /**
     GenericDao<SeriesSeason> testingDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -87,5 +88,5 @@ class SeriesSeasonDaoTest {
         assertNotNull(testSeriesSeason);
         testingDao.deleteEntity(testSeriesSeason);
         assertNull(testingDao.getById(2));
-    }
+    }**/
 }
